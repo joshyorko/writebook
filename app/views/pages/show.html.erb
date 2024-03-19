@@ -1,5 +1,5 @@
 <h1><%= @page.title %></h1>
 
-<p><%= @page.body %></p>
+<p><%= render_markdown @page.body %></p>
 
 <p><%= link_to "Edit", edit_leafable_path(@leaf) %></p>
