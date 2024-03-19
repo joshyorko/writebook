@@ -1,9 +1,22 @@
-<h1>All Books</h1>
-
-<ul>
-  <% @books.each do |book| %>
-    <li><%= link_to book.title, book %></li>
+<nav>
+  <%= link_to new_book_path, class: "btn flex-item-justify-end" do %>
+    <%= image_tag "add.svg", aria: { hidden: true }, size: 24 %>
+    <span class="for-screen-reader">Create a new book</span>
   <% end %>
-</ul>
+</nav>
 
-<%= link_to "New book", new_book_path %>
+<main>
+  <section class="books">
+    <% @books.each do |book| %>
+      <figure class="book">
+        <%= link_to book do %>
+          <%= image_tag "default-cover.svg", alt: "Book cover", class: "book-cover" %>
+          <h2>
+            <strong><%= book.title %></strong>
+            <small class="translucent">Author</small>
+          </h2>
+        <% end %>
+      </figure>
+    <% end %>
+  </section>
+</main>

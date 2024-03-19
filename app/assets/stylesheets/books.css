@@ -1,0 +1,65 @@
+.books {
+  display: grid;
+  font-size: 1rem;
+  inline-size: auto;
+  gap: 1lh 2ch;
+  /* grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); */
+  grid-template-columns: repeat(auto-fit, minmax(max(150px, 14cqi), 1fr));
+}
+
+.book {
+  --row-gap: 0.2lh;
+
+  container-type: inline-size;
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  text-align: center;
+
+  a {
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    row-gap: var(--block-space-half);
+  }
+
+  h2 {
+    font-size: clamp(1rem, 9cqi, 1.3rem);
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    row-gap: 0.1lh;
+  }
+
+  small {
+    font-weight: 400;
+    line-height: 1.3;
+  }
+}
+
+.book-cover {
+  background-color: var(--color-border);
+  border: 1px solid var(--color-border-dark);
+  border-radius: 0.3em;
+  margin: auto;
+  max-block-size: var(--cover-height, 75dvh);
+}
+
+.book-page {
+  container-type: inline-size;
+  display: grid;
+  font-size: clamp(1rem, 2.5cqi, 1.5rem);
+  margin: auto;
+  inline-size: 100ch;
+  max-inline-size: 100%;
+  padding-block-end: clamp(1lh, 6%, 3lh);
+  padding-inline: clamp(2ch, 6%, 5ch);
+  text-align: start;
+  grid-template-columns: minmax(200px, 20dvw) 1fr;
+  column-gap: 3dvw;
+
+  @media (max-width: 80ch) {
+    grid-template-columns: 1fr;
+  }
+}

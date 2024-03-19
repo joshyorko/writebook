@@ -1,0 +1,62 @@
+.btn {
+  --btn-size: 2.65em;
+
+  align-items: center;
+  background-color: var(--btn-background, var(--color-text-reversed));
+  border-radius: var(--btn-border-radius, 2em);
+  border: var(--btn-border-size, 1px) solid var(--btn-border-color, var(--color-border-darker));
+  color: var(--btn-color, var(--color-text));
+  cursor: pointer;
+  display: inline-flex;
+  font-weight: 600;
+  gap: 0.5em;
+  justify-content: center;
+  padding: var(--btn-padding, 0.5em 1.1em);
+  pointer-events: auto;
+  text-align: center;
+
+  img {
+    -webkit-touch-callout: none;
+    user-select: none;
+  }
+
+  /* Default icon styles */
+  &:where(:has(img)) {
+    text-align: start;
+
+    img {
+      inline-size: 1.3em;
+      max-inline-size: unset;
+    }
+
+    img:not([class]) {
+      filter: invert(0);
+
+      @media (prefers-color-scheme: dark) {
+        filter: invert(100%);
+      }
+    }
+  }
+
+  /* Circle buttons */
+  &:where(:has(.for-screen-reader):has(img)) {
+    --btn-border-radius: 50%;
+    --btn-padding: 0;
+
+    aspect-ratio: 1;
+    block-size: var(--btn-size);
+    display: grid;
+    inline-size: var(--btn-size);
+    place-items: center;
+
+    > * {
+      grid-area: 1/1;
+    }
+  }
+}
+
+.btn--reversed {
+  --btn-background: var(--color-text);
+  --btn-border-color: var(--color-bg);
+  --btn-color: var(--color-bg);
+}

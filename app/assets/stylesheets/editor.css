@@ -1,0 +1,13 @@
+.editor {
+  caret-color: var(--color-link);
+  font-family: var(--font-sans);
+  hyphens: none;
+  text-align: left;
+  text-justify: unset;
+  padding: calc(var(--block-space-half) / 2) var(--inline-space);
+  margin: calc(var(--block-space-half) / -2) calc(var(--inline-space) * -1);
+
+  p {
+    hyphens: none;
+  }
+}
