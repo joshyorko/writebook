@@ -22,6 +22,8 @@ class PagesController < ApplicationController
   end
 
   def destroy
+    @leaf.destroy
+    redirect_to @book
   end
 
   private
