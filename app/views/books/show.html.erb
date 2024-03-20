@@ -56,6 +56,24 @@
           </li>
         <% end %>
       </ol>
+
+      <ol class="unpad toc--grid">
+        <% @leaves.each do |leaf| %>
+          <li>
+            <%= link_to leafable_path(leaf) do %>
+              <figure>
+                <div class="toc__page">
+                  <%= leaf.leafable.body %>
+                </div>
+                <figcaption class="flex flex-column">
+                  <%= leaf.title %>
+                  <small class="center wordcount translucent txt-align-center"><%= word_count(leaf.leafable.body) %></small>
+                </figcaption>
+              </figure>
+            <% end %>
+          </li>
+        <% end %>
+      </ol>
     </div>
   </section>
 </main>
