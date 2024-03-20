@@ -56,7 +56,6 @@
 
 .toc--grid {
   display: grid;
-  font-size: 1rem;
   inline-size: auto;
   gap: 1lh 2ch;
   grid-template-columns: repeat(auto-fit, minmax(max(100px, 12cqi), 1fr));
@@ -71,6 +70,7 @@
 :is(.toc--grid, .toc--row) {
   li {
     color: var(--color-text);
+    container-type: inline-size;
     display: flex;
     flex-direction: column;
     list-style: none;
@@ -86,7 +86,7 @@
     a {
       text-decoration: none;
       color: inherit;
-      font-size: 0.8em;
+      font-size: clamp(0.8rem, 6cqi, 1.2rem);
       line-height: 1.2;
     }
 
@@ -100,7 +100,7 @@
 
       figcaption {
         grid-area: 1/1;
-        font-size: 0.8em;
+        font-size: clamp(0.8rem, 6cqi, 1.2rem);
         place-self: center;
         padding-inline: var(--inline-space);
         margin-block-start: -1em;
@@ -123,12 +123,12 @@
   border-radius: 0.3em;
   border: 1px solid var(--color-border-darker);
   margin-block-end: 0.5lh;
-  font-size: 0.5em;
-  padding: 1em 2.5em;
+  font-size: clamp(0.33rem, 5cqi, 0.7rem);
+  line-height: 1.4;
+  padding: 10cqi;
   text-align: start;
   overflow: clip;
 }
-
 
 .toc__page--new {
   transition: all 1s, display 1s;
