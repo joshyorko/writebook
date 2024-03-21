@@ -110,26 +110,6 @@ code {
 p {
   hyphens: auto;
   letter-spacing: -0.005ch;
-  /* Idented paragraph styles */
-  /* line-height: calc(1ex / 0.32); */
-  /* margin: 1lh auto; */
-  /* text-align: justify; */
-  /* text-justify: distribute; */
-
-  &:first-of-type::first-letter {
-    /* -webkit-initial-letter: 3; */
-    /* initial-letter: 3; */
-    /* margin-inline-end: 0.5ch; */
-  }
-
-  &:has( + p) {
-    /* margin-block-end: 0; */
-
-    + p {
-      /* text-indent: 3ch; */
-      /* margin-block-start: 0; */
-    }
-  }
 }
 
 blockquote {
