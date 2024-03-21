@@ -46,6 +46,36 @@
       grid-area: 1/1;
     }
   }
+
+  /* Radios and checkboxes */
+  &:has(input[type=radio], input[type=checkbox]) {
+    :is(input[type=radio], input[type=checkbox]) {
+      opacity: 0;
+    }
+  }
+
+  &:has(input:checked)  {
+    --btn-background: var(--color-text);
+    --btn-color: var(--color-text-reversed);
+
+    img {
+      filter: invert(100%);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      img {
+        filter: invert(0);
+      }
+    }
+  }
+
+  [disabled] &[type=submit],
+  &[type=submit]:disabled {
+    cursor: not-allowed;
+    filter: grayscale(100%) contrast(0.5);
+    opacity: 0.5;
+    pointer-events: none;
+  }
 }
 
 /* Variants */
@@ -73,4 +103,12 @@
       filter: invert(0);
     }
   }
+}
+
+.button-bar {
+  --column-gap: var(--inline-space-half);
+
+  border-radius: 2em;
+  inline-size: fit-content;
+  padding: var(--inline-space-half) var(--inline-space);
 }

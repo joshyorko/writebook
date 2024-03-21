@@ -137,3 +137,25 @@
     background-color: yellow;
   }
 }
+
+.toc {
+  &:where(:has(#toc-list:checked)) {
+    .toc--list {
+      display: list;
+    }
+
+    .toc--grid {
+      display: none;
+    }
+  }
+
+  &:where(:has(#toc-grid:checked)) {
+    .toc--list {
+      display: none;
+    }
+
+    .toc--grid {
+      display: grid;
+    }
+  }
+}

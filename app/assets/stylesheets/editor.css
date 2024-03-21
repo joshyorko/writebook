@@ -10,10 +10,3 @@
     hyphens: none;
   }
 }
-
-.editor-toolbar {
-  --column-gap: var(--inline-space-half);
-
-  border-radius: 2em;
-  padding: var(--inline-space-half) var(--inline-space);
-}

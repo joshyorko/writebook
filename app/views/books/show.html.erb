@@ -39,12 +39,26 @@
         <%= image_tag "world.svg", aria: { hidden: true }, size: 36 %>
       </div>
     </aside>
-    <div class="full-width">
+    <div class="toc full-width">
       <h1 class="txt-xx-large margin-block-none flex flex-column gap" style="row-gap: 0.1lh;">
         <strong><%= @book.title %></strong>
         <small class="txt-normal txt-large txt-tight-lines">Subtitle</small>
         <small class="txt-normal txt-large translucent txt-tight-lines">by Author</small>
       </h1>
+
+      <div class="toc__view center flex-inline">
+        <label class="btn btn--plain txt-medium">
+          <input type="radio" name="view" id="toc-list" checked="checked" hidden>
+          <%= image_tag "view-list.svg", aria: { hidden: true }, size: 24 %>
+          <span class="for-screen-reader">List view</span>
+        </label>
+
+        <label class="btn btn--plain txt-medium">
+          <input type="radio" name="view" id="toc-grid" hidden>
+          <%= image_tag "view-grid.svg", aria: { hidden: true }, size: 24 %>
+          <span class="for-screen-reader">Page view</span>
+        </label>
+      </div>
 
       <ol class="unpad toc--list">
         <% @leaves.each do |leaf| %>
@@ -88,9 +102,9 @@
 </main>
 
 <footer>
-  <menu class="full-width position-relative flex align-center justify-center" data-controller="popup">
-    <button class="btn btn--reversed", data-action="popup#toggle">
-      <%= image_tag "add.svg", aria: { hidden: true }, size: 24, class: "colorize--white" %>
+  <menu class="button-bar position-relative flex fill-black align-center justify-center" data-controller="popup">
+    <button class="btn btn--plain btn--reversed", data-action="popup#toggle">
+      <%= image_tag "add.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">Add a new page</span>
     </button>
 
