@@ -164,20 +164,38 @@
 
     <dialog id="new-page-picker" class="dialog page__picker" data-popup-target="popup" data-action="click->popup#close">
       <div class="flex align-center justify-center gap">
-        <%= link_to new_book_page_path(@book), class: "btn btn--plain txt-x-large" do %>
-          <%= image_tag "page-text.svg", aria: { hidden: true }, size: 48, class: "colorize--black" %>
-          <span class="for-screen-reader">Add a new text page</span>
-        <% end %>
+        <div class="flex flex-column justify-center">
+          <%= link_to new_book_page_path(@book), class: "btn btn--plain txt-x-large" do %>
+            <%= image_tag "page-text.svg", aria: { hidden: true }, size: 48 %>
+            <span class="for-screen-reader">Add a new text page</span>
+          <% end %>
+          <%= link_to new_book_page_path(@book), class: "btn txt-small btn--positive center" do %>
+            <%= image_tag "add.svg", aria: { hidden: true }, size: 48 %>
+            <span class="for-screen-reader">Add a new text page</span>
+          <% end %>
+        </div>
 
-        <%= link_to new_book_picture_path(@book), class: "btn btn--plain txt-x-large" do %>
-          <%= image_tag "page-image.svg", aria: { hidden: true }, size: 48, class: "colorize--black" %>
-          <span class="for-screen-reader">Add a photo page</span>
-        <% end %>
+        <div class="flex flex-column justify-center">
+          <%= link_to new_book_picture_path(@book), class: "btn btn--plain txt-x-large" do %>
+            <%= image_tag "page-image.svg", aria: { hidden: true }, size: 48 %>
+            <span class="for-screen-reader">Add a photo page</span>
+          <% end %>
+          <%= link_to new_book_picture_path(@book), class: "btn txt-small btn--positive center" do %>
+            <%= image_tag "add.svg", aria: { hidden: true }, size: 48 %>
+            <span class="for-screen-reader">Add a photo page</span>
+          <% end %>
+        </div>
 
-        <%= link_to new_book_section_path(@book), class: "btn btn--plain txt-x-large" do %>
-          <%= image_tag "page-chapter.svg", aria: { hidden: true }, size: 48, class: "colorize--black" %>
-          <span class="for-screen-reader">Add a section</span>
-        <% end %>
+        <div class="flex flex-column justify-center">
+          <%= link_to new_book_section_path(@book), class: "btn btn--plain txt-x-large" do %>
+            <%= image_tag "page-chapter.svg", aria: { hidden: true }, size: 48 %>
+            <span class="for-screen-reader">Add a section</span>
+          <% end %>
+          <%= link_to new_book_section_path(@book), class: "btn txt-small btn--positive center" do %>
+            <%= image_tag "add.svg", aria: { hidden: true }, size: 48 %>
+            <span class="for-screen-reader">Add a sectione</span>
+          <% end %>
+        </div>
       </div>
     </dialog>
   </div>
