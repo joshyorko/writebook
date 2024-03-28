@@ -33,7 +33,7 @@
 <% end %>
 
 <aside class="txt-align-center">
-  <%= image_tag "default-cover.svg", alt: "Book cover", class: "book__cover margin-none" %>
+  <%= image_tag @book.cover.attached? ? @book.cover : "default-cover.svg", alt: "Book cover", class: "book__cover margin-none" %>
 
   <div class="flex-inline align-center gap center margin-block-start pad-inline pad-block-half fill-shade border-radius">
     <%= image_tag "lock.svg", aria: { hidden: true }, size: 36 %>

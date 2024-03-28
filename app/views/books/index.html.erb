@@ -4,7 +4,7 @@
   <% @books.each do |book| %>
     <figure class="library__book margin-none">
       <%= link_to book, class: "txt-undecorated txt-ink flex flex-column gap-half" do %>
-        <%= image_tag "default-cover.svg", alt: "Book cover", class: "book__cover" %>
+        <%= image_tag book.cover.attached? ? book.cover : "default-cover.svg", alt: "Book cover", class: "book__cover" %>
         <h2 class="margin-none flex flex-column">
           <strong><%= book.title %></strong>
           <small class="translucent txt-normal">Author</small>
