@@ -104,11 +104,12 @@
 
 .btn--reversed {
   --btn-background: var(--color-ink);
-  --btn-border-color: var(--color-bg);
   --btn-color: var(--color-bg);
 }
 
 :is(.btn--negative, .btn--positive, .btn--reversed) {
+  --btn-border-color: var(--color-bg);
+
   img {
     filter: invert(100%);
 
