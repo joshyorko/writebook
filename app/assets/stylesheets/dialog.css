@@ -1,9 +1,4 @@
 .dialog {
-  --border-color: var(--color-border-darker);
-  --border-radius: 1.5em;
-  --border-size: 1px;
-  --column-gap: var(--border-radius);
-
   background-color: var(--color-bg);
   border: 0;
   box-shadow:
@@ -13,17 +8,19 @@
       0 .8em 1.2em -1.6em oklch(var(--lch-always-black) / 0.9),
       0 1.2em 1.6em -2em oklch(var(--lch-always-black) / 1);
   color: var(--color-ink-reversed);
-  border-radius: var(--border-radius);
+  border-radius: var(--border-radius, 1.5em);
   inline-size: 50ch;
   max-inline-size: 100%;
   opacity: 0;
-  overflow: visible;
-  padding: var(--border-radius) calc(var(--border-radius) * 1.25);
+  padding: var(--block-space) var(--inline-space-double);
 
   &::backdrop {
-    background-color: oklch(var(--lch-always-black));
+    background-color: var(--color-always-black);
     opacity: 0;
-    transition: display 0.5s allow-discrete, opacity 0.5s, overlay 0.5s allow-discrete;
+    transition:
+      display 0.5s allow-discrete,
+      opacity 0.5s,
+      overlay 0.5s allow-discrete;
   }
 
   &[open] {
