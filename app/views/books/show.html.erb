@@ -24,6 +24,11 @@
       <%= image_tag "share.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">Share</span>
     </button>
+
+    <%= link_to edit_book_path(@book), class: "btn" do %>
+      <%= image_tag "pencil.svg", aria: { hidden: true }, size: 24 %>
+      <span class="for-screen-reader">Go back</span>
+    <% end %>
   </nav>
 <% end %>
 

@@ -1,5 +1,5 @@
 class BooksController < ApplicationController
-  before_action :set_book, only: %i[ show ]
+  before_action :set_book, only: %i[ show edit update ]
 
   def index
     @books = Book.ordered
@@ -16,6 +16,14 @@ class BooksController < ApplicationController
 
   def show
     @leaves = @book.leaves.excluding_trashed.with_leafables.positioned
+  end
+
+  def edit
+  end
+
+  def update
+    @book.update(book_params)
+    redirect_to @book
   end
 
   private

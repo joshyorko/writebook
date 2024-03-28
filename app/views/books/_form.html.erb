@@ -1,0 +1,4 @@
+<%= form_with model: book, id: "book-editor" do |form| %>
+  <%= form.text_field :title, required: true, autofocus: true, class: "input full-width" %>
+  <%= form.submit "Save", hidden: true %>
+<% end %>
