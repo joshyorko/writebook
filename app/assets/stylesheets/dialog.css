@@ -8,11 +8,11 @@
       0 .8em 1.2em -1.6em oklch(var(--lch-always-black) / 0.9),
       0 1.2em 1.6em -2em oklch(var(--lch-always-black) / 1);
   color: var(--color-ink-reversed);
-  border-radius: var(--border-radius, 1.5em);
+  border-radius: var(--border-radius, 1em);
   inline-size: 50ch;
   max-inline-size: 100%;
   opacity: 0;
-  padding: var(--block-space) var(--inline-space-double);
+  padding: var(--block-space) var(--inline-space);
 
   &::backdrop {
     background-color: var(--color-always-black);
