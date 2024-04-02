@@ -140,6 +140,10 @@
           <%= leaf.title %>
         <% end %>
 
+        <% if (rand(10) == 2) %>
+          <%= image_tag "bookmark.svg", aria: { hidden: true }, size: 24 %>
+        <% end %>
+
         <small class="toc__wordcount translucent">
           <% if leaf.leafable.is_a?(Page) %>
             <%= word_count(leaf.leafable.body) %>
