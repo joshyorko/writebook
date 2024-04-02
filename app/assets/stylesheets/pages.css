@@ -18,14 +18,17 @@
   transform: translateX(-50%);
   transform-origin: bottom center;
   transition:
-    display 0.5s allow-discrete,
-    inset 0.5s allow-discrete,
-    opacity 0.5s,
-    overlay 0.5s allow-discrete;
+    display var(--speed) allow-discrete,
+    inset var(--speed) allow-discrete,
+    opacity var(--speed),
+    overlay var(--speed) allow-discrete;
 
   &::backdrop {
     opacity: 0;
-    transition: display 0.5s allow-discrete, opacity 0.5s, overlay 0.5s allow-discrete;
+    transition:
+      display var(--backdrop-speed) allow-discrete,
+      opacity var(--backdrop-speed),
+      overlay var(--backdrop-speed) allow-discrete;
   }
 
   &[open] {

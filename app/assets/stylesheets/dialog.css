@@ -1,4 +1,7 @@
 .dialog {
+  --speed: 150ms;
+  --backdrop-speed: 150ms;
+
   background-color: var(--color-bg);
   border: 0;
   box-shadow:
@@ -16,19 +19,19 @@
   transform: translateY(50%);
   transform-origin: bottom center;
   transition:
-      display 0.3s allow-discrete,
-      opacity 0.3s,
-      overlay 0.3s allow-discrete,
-      transform 0.3s;
+      display var(--speed) allow-discrete,
+      opacity var(--speed),
+      overlay var(--speed) allow-discrete,
+      transform var(--speed);
 
   &::backdrop {
     background-color: var(--color-ink);
     opacity: 0;
     transform: translateY(0);
     transition:
-      display 0.5s allow-discrete,
-      opacity 0.5s,
-      overlay 0.5s allow-discrete;
+      display var(--backdrop-speed) allow-discrete,
+      opacity var(--backdrop-speed),
+      overlay var(--backdrop-speed) allow-discrete;
   }
 
   &[open] {
