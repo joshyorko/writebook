@@ -7,19 +7,6 @@
         <legend>
           <strong><%= Current.account.name %></strong>
         </legend>
-
-        <label data-controller="upload-preview">
-          <div>
-            <%= form.file_field :avatar, class: "input", accept: "image/*",
-                  data: { upload_preview_target: "input", action: "upload-preview#previewImage" } %>
-            <span class="for-screen-reader">Upload avatar</span>
-          </div>
-
-          <div>
-            <%= image_tag @user.avatar.attached? ? @user.avatar : "default-avatar.svg", aria: { hidden: "true" }, data: { upload_preview_target: "image" } %>
-            <span class="for-screen-reader">Avatar</span>
-          </div>
-        </label>
       </fieldset>
 
       <div>
