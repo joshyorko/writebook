@@ -140,35 +140,37 @@
     <dialog id="new-page-picker" class="dialog panel page__picker" data-popup-target="popup" data-action="click->popup#close">
       <div class="flex align-center justify-center gap">
         <div class="flex flex-column justify-center">
-          <%= link_to new_book_page_path(@book), class: "btn btn--plain txt-x-large" do %>
-            <%= image_tag "page-text.svg", aria: { hidden: true }, size: 48 %>
-            <span class="for-screen-reader">Add a new text page</span>
-          <% end %>
-          <%= link_to new_book_page_path(@book), class: "btn txt-small btn--positive center" do %>
-            <%= image_tag "add.svg", aria: { hidden: true }, size: 48 %>
-            <span class="for-screen-reader">Add a new text page</span>
-          <% end %>
-        </div>
-
-        <div class="flex flex-column justify-center">
-          <%= link_to new_book_picture_path(@book), class: "btn btn--plain txt-x-large" do %>
-            <%= image_tag "page-image.svg", aria: { hidden: true }, size: 48 %>
-            <span class="for-screen-reader">Add a photo page</span>
-          <% end %>
-          <%= link_to new_book_picture_path(@book), class: "btn txt-small btn--positive center" do %>
-            <%= image_tag "add.svg", aria: { hidden: true }, size: 48 %>
-            <span class="for-screen-reader">Add a photo page</span>
+          <%= form_with model: [ @book, Page.new ] do |form| %>
+            <%= form.hidden_field :title %>
+            <label>
+              <%= image_tag "page-text.svg", aria: { hidden: true }, size: 64%>
+              <%= tag.button class: "btn btn--positive center margin-block-start-half" do %>
+                <%= image_tag "add.svg", aria: { hidden: true }, size: 48 %>
+                <span class="for-screen-reader">Add a new text page</span>
+              <% end %>
+            </label>
           <% end %>
         </div>
 
         <div class="flex flex-column justify-center">
-          <%= link_to new_book_section_path(@book), class: "btn btn--plain txt-x-large" do %>
-            <%= image_tag "page-chapter.svg", aria: { hidden: true }, size: 48 %>
-            <span class="for-screen-reader">Add a section</span>
+          <%= form_with model: [ @book, Picture.new ] do |form| %>
+            <%= form.hidden_field :title %>
+            <%= image_tag "page-picture.svg", aria: { hidden: true }, size: 64%>
+            <%= tag.button class: "btn btn--positive center margin-block-start-half" do %>
+              <%= image_tag "add.svg", aria: { hidden: true }, size: 48 %>
+              <span class="for-screen-reader">Add a photo page</span>
+            <% end %>
           <% end %>
-          <%= link_to new_book_section_path(@book), class: "btn txt-small btn--positive center" do %>
-            <%= image_tag "add.svg", aria: { hidden: true }, size: 48 %>
-            <span class="for-screen-reader">Add a sectione</span>
+        </div>
+
+        <div class="flex flex-column justify-center">
+          <%= form_with model: [ @book, Section.new ] do |form| %>
+            <%= form.hidden_field :title %>
+            <%= image_tag "page-section.svg", aria: { hidden: true }, size: 64%>
+            <%= tag.button class: "btn btn--positive center margin-block-start-half" do %>
+              <%= image_tag "add.svg", aria: { hidden: true }, size: 48 %>
+              <span class="for-screen-reader">Add a section page</span>
+            <% end %>
           <% end %>
         </div>
       </div>
