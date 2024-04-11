@@ -1,3 +1,5 @@
 <%= turbo_stream.append :leaves do %>
-  <%= render "leaves/leaf", leaf: @leafable.leaf %>
+  <%= render "leaves/leaf", leaf: @leafable.leaf, css_class: "wiggle" do %>
+    <span data-controller="scroll-into-view"></span>
+  <% end %>
 <% end %>

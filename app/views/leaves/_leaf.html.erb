@@ -1,4 +1,4 @@
-<li class="toc__leaf toc__leaf--<%= leaf.leafable_name%>" id="<%= dom_id leaf %>">
+<li class="toc__leaf toc__leaf--<%= leaf.leafable_name %> <%= local_assigns[:css_class] %>">
   <%= image_tag "handle.svg", aria: { hidden: true }, size: 24, class: "toc__handle" %>
 
   <%= link_to leafable_path(leaf), class: "toc__thumbnail" do %>
@@ -21,4 +21,6 @@
     <%= image_tag "pencil.svg", aria: { hidden: true }, size: 24 %>
     <span class="for-screen-reader">Edit</span>
   </button>
+
+  <%= yield if block_given? %>
 </li>
