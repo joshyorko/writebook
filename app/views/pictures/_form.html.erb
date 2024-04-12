@@ -1,4 +1,4 @@
-<%= form_with model: [ book, picture ], id: "picture-editor" do |form| %>
+<%= form_with model: [ book, picture ], id: "picture-editor", format: :html do |form| %>
   <%= form.file_field :image, class: "input input--file" %>
   <%= form.submit "Save", hidden: true %>
 <% end %>

@@ -9,7 +9,7 @@
     <% end %>
 
     <div class="breadcrumbs ">
-      <%= form_with model: [ @book, @picture ], class: "flex align-center gap-half" do |form| %>
+      <%= form_with model: [ @book, @picture ], class: "flex align-center gap-half", format: :html do |form| %>
         <%= form.text_field :title, class: "input full-width" %>
       <% end %>
     </div>
