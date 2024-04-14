@@ -9,9 +9,15 @@ Rails.application.routes.draw do
 
   resources :books do
     resources :leaves
+
+    scope module: "books" do
+      namespace :leaves do
+        resources :moves, only: :create
+      end
+    end
+
     resources :sections
     resources :pictures
-
     resources :pages do
       scope module: "pages" do
         resources :edits, only: :show

@@ -1,0 +1,52 @@
+.toc__container:where(:has(#arrange-mode:checked)) {
+  .toc__leaf * {
+    pointer-events: none;
+  }
+}
+
+.toc__leaf {
+  &.arrangement-cursor {
+    border-style: dashed;
+  }
+
+  &.arrangement-selected {
+    border-color: red;
+  }
+}
+
+.arrangement-move-mode {
+  .toc__leaf {
+    &.arrangement-selected {
+      animation: arrangement-pulsing 600ms infinite;
+    }
+  }
+}
+
+.arrangement-placeholder {
+  background-color: #0001;
+  border-radius: 12px;
+}
+
+.arrangement-drag-image {
+  position: fixed;
+  bottom: 100%;
+  right: 100%;
+  padding: 0 1rem;
+  line-height: 2rem;
+  background-color: red;
+  color: white;
+  border-radius: 1rem;
+  text-wrap: nowrap;
+}
+
+@keyframes arrangement-pulsing {
+  from {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+  to {
+    opacity: 1;
+  }
+}

@@ -81,7 +81,7 @@
   </div>
 </aside>
 
-<div class="toc__container full-width txt-align-center">
+<%= arrangement_tag @book, class: "toc__container full-width txt-align-center" do %>
   <h1 class="txt-align-start txt-xx-large margin-block-none flex flex-column gap" style="row-gap: 0.1lh;">
     <strong><%= @book.title %></strong>
     <small class="txt-normal txt-large txt-tight-lines"><%= @book.subtitle %></small>
@@ -113,6 +113,8 @@
       </dialog>
     </div>
 
+    <label><input type="checkbox" name="arrange-mode" id="arrange-mode" data-action="arrangement#setArrangeMode"> Arrange</label>
+
     <label class="btn txt-medium flex-item-justify-end">
       <input type="radio" name="view" id="toc-list" value="list" checked="checked">
       <%= image_tag "view-list.svg", aria: { hidden: true }, size: 24 %>
@@ -125,12 +127,16 @@
       <span class="for-screen-reader">Page view</span>
     </label>
   </div>
+
   <div class="position-relative">
-    <ol class="toc">
+    <div class="toc" tabindex="0" data-arrangement-target="container" data-action="<%= arrangement_actions %>">
       <%= turbo_frame_tag :leaves do %>
         <%= render partial: "leaves/leaf", collection: @leaves, as: :leaf %>
       <% end %>
-    </ol>
+    </div>
+
+    <div data-arrangement-target="layer" class="toc"></div>
+    <div data-arrangement-target="dragImage" class="arrangement-drag-image"></div>
 
     <div class="page__picker flex-inline center align-center justify-center gap border-radius pad-block pad-inline-double">
       <div class="flex flex-column justify-center">
@@ -173,4 +179,4 @@
       </div>
     </div>
   </div>
-</div>
+<% end %>

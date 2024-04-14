@@ -39,6 +39,12 @@ class Leaf::PositionableTest < ActiveSupport::TestCase
     assert_equal [ leaves(:welcome_section), leaves(:welcome_page), leaves(:summary_page), leaves(:reading_picture) ], @leaves.reload
   end
 
+  test "items can be moved in blocks" do
+    leaves(:welcome_section).move_to_position(1, followed_by: [ leaves(:welcome_page), leaves(:summary_page) ])
+
+    assert_equal [ leaves(:reading_picture), leaves(:welcome_section), leaves(:welcome_page), leaves(:summary_page) ], @leaves.reload
+  end
+
   test "new items are inserted at the end" do
     new_page = books(:handbook).press(Page.new(title: "New Page"))
 

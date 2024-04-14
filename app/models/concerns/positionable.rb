@@ -40,15 +40,21 @@ module Positionable
     other_positioned_siblings.after(self).first
   end
 
-  def move_to_position(offset)
+  # TODO: the `followed_by` part of this API is a little strange. It's there so
+  # we can keep the move operation on the model, while still allowing a
+  # collection of items to be moved at once. Feels quite lop-sided though, so
+  # worth thinking of a different way to model this.
+  def move_to_position(offset, followed_by: [])
     with_positioning_lock do
-      if offset < 1
-        position_at_start
-      else
-        set_position_between(*find_before_and_after_for_offset(offset))
+      all_to_move = [ self, *followed_by ]
+      before, after = before_and_after_for(offset: offset, moving: all_to_move)
+      gap = (after - before) / (all_to_move.count + 1)
+
+      all_to_move.each.with_index(1) do |item, index|
+        item.update!(position_score: before + (index * gap))
       end
 
-      save!
+      remember_to_rebalance_positions if gap < REBALANCE_THRESHOLD
     end
   end
 
@@ -68,17 +74,19 @@ module Positionable
       self.position_score = (all_positioned_siblings.maximum(:position_score) || 0) + ELEMENT_GAP
     end
 
-    def find_before_and_after_for_offset(offset)
-      before, after = other_positioned_siblings.offset(offset - 1).limit(2).pluck(:position_score)
-      before ||= all_positioned_siblings.maximum(:position_score)
-      [ before, after || (before + 2 * ELEMENT_GAP) ]
-    end
+    def before_and_after_for(offset:, moving:)
+      other_items = all_positioned_siblings.excluding(moving)
 
-    def set_position_between(before, after)
-      gap = after - before
-      remember_to_rebalance_positions if gap < REBALANCE_THRESHOLD
+      if offset < 1
+        after = all_positioned_siblings.minimum(:position_score) || (2 * ELEMENT_GAP)
+        before = after - ELEMENT_GAP
+      else
+        before, after = other_items.offset(offset - 1).limit(2).pluck(:position_score)
+        before ||= all_positioned_siblings.maximum(:position_score)
+        after ||= before + (moving.count.succ * ELEMENT_GAP)
+      end
 
-      self.position_score = before + (gap / 2)
+      [ before, after ]
     end
 
     def remember_to_rebalance_positions
