@@ -13,10 +13,13 @@
   }
 }
 
-
 .toc__container:where(:has(#arrange-mode:checked)) {
   .toc__leaf * {
     pointer-events: none;
+  }
+
+  .page__picker {
+    display: none;
   }
 }
 
