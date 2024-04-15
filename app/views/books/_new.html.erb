@@ -1,6 +1,6 @@
 <figure class="library__book">
   <div class="txt-undecorated txt-ink flex flex-column gap-half" data-controller="popup">
-    <%= image_tag "default-cover.svg", alt: "Book cover", class: "book__cover", data: { action: "click->popup#toggle" }, style: "cursor: pointer" %>
+    <%= image_tag "default-cover.webp", alt: "Book cover", class: "book__cover", data: { action: "click->popup#toggle" }, style: "cursor: pointer" %>
     <div class="txt-small txt-align-center">
       <button class="btn btn--positive center", data-action="popup#toggle">
         <%= image_tag "add.svg", aria: { hidden: true }, size: 24 %>
@@ -10,16 +10,17 @@
       <dialog class="dialog panel" data-popup-target="popup">
         <%= render "books/form", book: Book.new %>
         <div class="flex align-center gap margin-block-start">
-          <button type="submit" form="book-editor", class="btn btn--positive flex-item-justify-start">
-            <%= image_tag "check.svg", aria: { hidden: true }, size: 24 %>
-            <span class="for-screen-reader">Save</span>
-          </button>
-          <form method="dialog" class="flex-item-justify-end">
-            <button class="btn btn--negative">
+          <form method="dialog" class="flex-item-justify-start">
+            <button class="btn btn--negative txt-medium">
               <%= image_tag "remove.svg", aria: { hidden: true }, size: 24 %>
               <span class="for-screen-reader">Cancel and close</span>
             </button>
           </form>
+
+          <button type="submit" form="book-editor", class="btn btn--positive txt-medium flex-item-justify-end">
+            <%= image_tag "check.svg", aria: { hidden: true }, size: 24 %>
+            <span class="for-screen-reader">Save</span>
+          </button>
         </div>
       </dialog>
     </div>

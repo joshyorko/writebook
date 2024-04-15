@@ -23,7 +23,7 @@
   text-align: center;
 
   .toc__container:where(:has(#toc-list:checked)) & {
-    align-items: start;
+    align-items: center;
     column-gap: 1ch;
     display: flex;
     flex-direction: row;
@@ -85,15 +85,21 @@
     flex-grow: 1;
     font-size: inherit;
     gap: var(--inline-space);
-    inline-size: fill-available;
-    text-decoration: underline;
     white-space: nowrap;
+
+    &:is(a) {
+      text-decoration: underline;
+    }
+
+    :is(.input) {
+      field-sizing: content;
+      min-inline-size: 20ch;
+    }
 
     &::after {
       border-block-end: 1px dotted var(--color-border-darker);
       content: "";
-      flex-grow: 0;
-      inline-size: 100%;
+      flex-grow: 1;
       margin-block-end: 0.25em;
     }
 

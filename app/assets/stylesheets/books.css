@@ -1,6 +1,4 @@
 .book__cover {
-  background-color: var(--color-border);
-  border: 1px solid var(--color-border-dark);
   border-radius: 0.3em;
   margin: auto;
   max-block-size: var(--cover-height, 75dvh);
@@ -9,9 +7,13 @@
 .bookmark {
   --icon-space: calc(var(--inline-space) * 1.8);
 
+  appearance: none;
+  background: none;
+  border: 0;
   display: block;
   inset: var(--progress, 0) 0 auto calc(var(--icon-space) * -1);
   margin: calc(var(--block-space) * -0.5) 0;
+  padding: 0;
   position: absolute;
 
   .bookmark__icon {

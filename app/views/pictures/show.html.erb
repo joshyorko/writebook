@@ -6,7 +6,7 @@
 <% end %>
 
 <div class="page--picture">
-  <%= image_tag @picture.image.variant(:large) %>
+  <%= image_tag @picture.image.variant(:large) if @picture.image.attached? %>
 </div>
 
 <% content_for :footer do %>

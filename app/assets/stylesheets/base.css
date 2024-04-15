@@ -77,6 +77,11 @@ a:not([class]) {
   padding: calc(var(--block-space) * 2);
 }
 
+/* Turbo */
+turbo-frame {
+  display: contents;
+}
+
 /* Nicer scrollbars on Chrome 29+. This is intended for Windows machines, but */
 /* there's not a way to target Windows using CSS, so Chrome on Mac will have */
 /* slightly thinner scrollbars than normal. #C1C1C1 is the default color on Macs. */

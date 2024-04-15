@@ -6,8 +6,13 @@ class PagesController < ApplicationController
   end
 
   def create
-    @book.press new_page
-    redirect_to @book
+    @leafable = new_page
+    @book.press @leafable
+
+    respond_to do |format|
+      format.turbo_stream { render }
+      format.html { redirect_to @book }
+    end
   end
 
   def show
@@ -18,7 +23,11 @@ class PagesController < ApplicationController
 
   def update
     @leaf.edit page_params
-    redirect_to leafable_url(@leaf)
+
+    respond_to do |format|
+      format.turbo_stream { render }
+      format.html { redirect_to leafable_url(@leaf) }
+    end
   end
 
   def destroy

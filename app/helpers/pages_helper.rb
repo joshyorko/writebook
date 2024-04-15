@@ -4,6 +4,7 @@ module PagesHelper
   end
 
   def word_count(content)
+    return if content.blank?
     pluralize content.split.size, "word"
   end
 end

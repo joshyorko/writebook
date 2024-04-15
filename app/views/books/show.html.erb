@@ -66,7 +66,7 @@
 <% end %>
 
 <aside class="txt-align-center">
-  <%= image_tag @book.cover.attached? ? @book.cover : "default-cover.svg", alt: "Book cover", class: "book__cover margin-none" %>
+  <%= image_tag @book.cover.attached? ? @book.cover : "default-cover.webp", alt: "Book cover", class: "book__cover margin-none" %>
 
   <div class="flex-inline align-center gap center margin-block-start pad-inline pad-block-half fill-shade border-radius">
     <%= image_tag "lock.svg", aria: { hidden: true }, size: 36, class: "colorize--black" %>
@@ -81,8 +81,8 @@
   </div>
 </aside>
 
-<div class="toc__container full-width">
-  <h1 class="txt-xx-large margin-block-none flex flex-column gap" style="row-gap: 0.1lh;">
+<div class="toc__container full-width txt-align-center">
+  <h1 class="txt-align-start txt-xx-large margin-block-none flex flex-column gap" style="row-gap: 0.1lh;">
     <strong><%= @book.title %></strong>
     <small class="txt-normal txt-large txt-tight-lines"><%= @book.subtitle %></small>
     <small class="txt-normal txt-large translucent txt-tight-lines"><%= @book.author %></small>
@@ -98,16 +98,17 @@
       <dialog class="dialog panel" data-popup-target="popup">
         <%= render "books/form", book: @book %>
         <div class="flex align-center gap margin-block-start">
-          <button type="submit" form="book-editor", class="btn btn--positive flex-item-justify-start">
-            <%= image_tag "check.svg", aria: { hidden: true }, size: 24 %>
-            <span class="for-screen-reader">Save</span>
-          </button>
-          <form method="dialog" class="flex-item-justify-end">
-            <button class="btn btn--negative">
+          <form method="dialog" class="flex-item-justify-start">
+            <button class="btn btn--negative txt-medium">
               <%= image_tag "remove.svg", aria: { hidden: true }, size: 24 %>
               <span class="for-screen-reader">Cancel and close</span>
             </button>
           </form>
+
+          <button type="submit" form="book-editor", class="btn btn--positive txt-medium flex-item-justify-end">
+            <%= image_tag "check.svg", aria: { hidden: true }, size: 24 %>
+            <span class="for-screen-reader">Save</span>
+          </button>
         </div>
       </dialog>
     </div>
@@ -124,79 +125,52 @@
       <span class="for-screen-reader">Page view</span>
     </label>
   </div>
+  <div class="position-relative">
+    <ol class="toc">
+      <%= turbo_frame_tag :leaves do %>
+        <%= render partial: "leaves/leaf", collection: @leaves, as: :leaf %>
+      <% end %>
+    </ol>
 
-  <ol class="toc">
-    <% @leaves.each do |leaf| %>
-      <li class="toc__leaf toc__leaf--<%= leaf.leafable_name%>" draggable="true">
-        <%= image_tag "handle.svg", aria: { hidden: true }, size: 24, class: "toc__handle" %>
-
-        <%= link_to leafable_path(leaf), class: "toc__thumbnail" do %>
-          <%= leaf.title if leaf.leafable.is_a?(Section) %>
-          <%= leaf.leafable.body if leaf.leafable.is_a?(Page) %>
-          <%= image_tag leaf.leafable.image.variant(:large) if leaf.leafable.is_a?(Picture) %>
-        <% end %>
-
-        <%= link_to leafable_path(leaf), class: "toc__title" do %>
-          <%= leaf.title %>
-        <% end %>
-
-        <small class="toc__wordcount translucent">
-          <% if leaf.leafable.is_a?(Page) %>
-            <%= word_count(leaf.leafable.body) %>
-          <% end %>
-        </small>
-
-        <button class="btn btn--plain" hidden>
-          <%= image_tag "pencil.svg", aria: { hidden: true }, size: 24 %>
-          <span class="for-screen-reader">Edit</span>
-        </button>
-      </li>
-    <% end %>
-  </ol>
-</div>
-
-<% content_for :footer do %>
-  <div data-controller="popup dialog">
-    <button class="btn", data-action="popup#toggle">
-      <%= image_tag "add.svg", aria: { hidden: true }, size: 24 %>
-      <span class="for-screen-reader">Add a new page</span>
-    </button>
-
-    <dialog id="new-page-picker" class="dialog panel page__picker" data-popup-target="popup" data-action="click->popup#close">
-      <div class="flex align-center justify-center gap">
-        <div class="flex flex-column justify-center">
-          <%= link_to new_book_page_path(@book), class: "btn btn--plain txt-x-large" do %>
+    <div class="page__picker flex-inline center align-center justify-center gap border-radius pad-block pad-inline-double">
+      <div class="flex flex-column justify-center">
+        <%= form_with model: [ @book, Page.new ] do |form| %>
+          <%= form.hidden_field :title %>
+          <label>
             <%= image_tag "page-text.svg", aria: { hidden: true }, size: 48 %>
-            <span class="for-screen-reader">Add a new text page</span>
-          <% end %>
-          <%= link_to new_book_page_path(@book), class: "btn txt-small btn--positive center" do %>
-            <%= image_tag "add.svg", aria: { hidden: true }, size: 48 %>
-            <span class="for-screen-reader">Add a new text page</span>
-          <% end %>
-        </div>
-
-        <div class="flex flex-column justify-center">
-          <%= link_to new_book_picture_path(@book), class: "btn btn--plain txt-x-large" do %>
-            <%= image_tag "page-image.svg", aria: { hidden: true }, size: 48 %>
-            <span class="for-screen-reader">Add a photo page</span>
-          <% end %>
-          <%= link_to new_book_picture_path(@book), class: "btn txt-small btn--positive center" do %>
-            <%= image_tag "add.svg", aria: { hidden: true }, size: 48 %>
-            <span class="for-screen-reader">Add a photo page</span>
-          <% end %>
-        </div>
-
-        <div class="flex flex-column justify-center">
-          <%= link_to new_book_section_path(@book), class: "btn btn--plain txt-x-large" do %>
-            <%= image_tag "page-chapter.svg", aria: { hidden: true }, size: 48 %>
-            <span class="for-screen-reader">Add a section</span>
-          <% end %>
-          <%= link_to new_book_section_path(@book), class: "btn txt-small btn--positive center" do %>
-            <%= image_tag "add.svg", aria: { hidden: true }, size: 48 %>
-            <span class="for-screen-reader">Add a sectione</span>
-          <% end %>
-        </div>
+            <%= tag.button class: "btn btn--positive center margin-block-start-half txt-small" do %>
+              <%= image_tag "add.svg", aria: { hidden: true }, size: 48 %>
+              <span class="for-screen-reader">Add a new text page</span>
+            <% end %>
+          </label>
+        <% end %>
       </div>
-    </dialog>
+
+      <div class="flex flex-column justify-center">
+        <%= form_with model: [ @book, Picture.new ] do |form| %>
+          <%= form.hidden_field :title %>
+          <label>
+            <%= image_tag "page-picture.svg", aria: { hidden: true }, size: 48 %>
+            <%= tag.button class: "btn btn--positive center margin-block-start-half txt-small" do %>
+              <%= image_tag "add.svg", aria: { hidden: true }, size: 48 %>
+              <span class="for-screen-reader">Add a photo page</span>
+            <% end %>
+          </label>
+        <% end %>
+      </div>
+
+      <div class="flex flex-column justify-center">
+        <%= form_with model: [ @book, Section.new ] do |form| %>
+          <%= form.hidden_field :title %>
+          <label>
+            <%= image_tag "page-section.svg", aria: { hidden: true }, size: 48 %>
+            <%= tag.button class: "btn btn--positive center margin-block-start-half txt-small" do %>
+              <%= image_tag "add.svg", aria: { hidden: true }, size: 48 %>
+              <span class="for-screen-reader">Add a section page</span>
+            <% end %>
+          </label>
+        <% end %>
+      </div>
+    </div>
   </div>
-<% end %>
+</div>

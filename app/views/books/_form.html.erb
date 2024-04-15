@@ -1,7 +1,7 @@
 <%= form_with model: book, id: "book-editor" do |form| %>
   <div class="flex align-center gap full-width" style="--input-padding: 0.5rem 1rem; --input-border-radius: 0.5rem">
     <label class="input--file" data-controller="upload-preview">
-      <%= image_tag book.cover.attached? ? book.cover : "default-cover.svg", alt: "Book cover", size: 300,
+      <%= image_tag book.cover.attached? ? book.cover : "default-cover.webp", alt: "Book cover", size: 300,
           class: "book__cover margin-none", style: "--cover-height: 50dvh",
           data: { upload_preview_target: "image" } %>
       <%= form.file_field :cover, class: "input", accept: "image/*",
@@ -10,10 +10,10 @@
 
     <div class="flex flex-column gap full-width">
       <h1 class="txt-xx-large margin-none">
-        <strong><%= form.text_field :title, required: true, autofocus: true, class: "input full-width", placeholder: "Title" %></strong>
+        <strong><%= form.text_field :title, required: true, autofocus: true, class: "input full-width", placeholder: "Title", autocomplete: "off" %></strong>
       </h1>
-      <small class="txt-normal txt-large txt-tight-lines"><%= form.text_area :subtitle, class: "input full-width", placeholder: "Subtitle" %></small>
-      <small class="txt-normal txt-large txt-tight-lines"><%= form.text_field :author, class: "input full-width", placeholder: "Author" %></small>
+      <small class="txt-normal txt-large txt-tight-lines"><%= form.text_area :subtitle, class: "input full-width", placeholder: "Subtitle", autocomplete: "off" %></small>
+      <small class="txt-normal txt-large txt-tight-lines"><%= form.text_field :author, class: "input full-width", placeholder: "Author", autocomplete: "off" %></small>
     </div>
   </div>
 

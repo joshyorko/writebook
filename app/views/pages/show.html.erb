@@ -5,8 +5,7 @@
   <%= render "leaves/header", book: @book, leaf: @leaf %>
 <% end %>
 
-<h1><%= @page.title %></h1>
-<%= render_markdown @page.body %>
+<%= render_markdown @page.body if @page&.body %>
 
 <%= render "leaves/history", leaf: @leaf %>
 

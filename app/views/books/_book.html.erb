@@ -1,8 +1,8 @@
 <figure class="library__book">
   <%= link_to book, class: "txt-undecorated txt-ink flex flex-column gap-half" do %>
     <div class="flex-inline position-relative center">
-      <%= image_tag book.cover.attached? ? book.cover : "default-cover.svg", alt: "Book cover", class: "book__cover" %>
-      <%= link_to nil, class: "bookmark", style: "--progress: #{ rand(100) }%" do %>
+      <%= image_tag book.cover.attached? ? book.cover : "default-cover.webp", alt: "Book cover", class: "book__cover" %>
+      <%= tag.button class: "bookmark", style: "--progress: #{ rand(100) }%" do %>
         <div class="flex align-center gap-half">
           <span class="bookmark__icon">
             <svg viewBox="0 0 64 64" width="30px" height="30px" xmlns="http://www.w3.org/2000/svg">

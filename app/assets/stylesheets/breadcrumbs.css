@@ -1,5 +1,6 @@
 .breadcrumbs {
   display: flex;
+  align-items: center;
   gap: var(--inline-space-half);
   min-width: 0;
 

@@ -13,7 +13,9 @@
         <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
       <% end %> ▸
       <%= link_to @book.title, @book %> ▸
-      <strong><%= @picture.title %></strong>
+      <%= form_with model: [ @book, @picture ], class: "flex align-center gap-half", format: :html do |form| %>
+        <strong><%= form.text_field :title, class: "input full-width", autocomplete: "off" %></strong>
+      <% end %>
     </div>
 
     <button type="submit" form="picture-editor", class="btn flex-item-justify-end">
