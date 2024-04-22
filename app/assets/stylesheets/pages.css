@@ -1,4 +1,4 @@
-.page__editor {
+.page__editor .house-md-content {
   caret-color: var(--color-link);
   font-family: var(--font-sans);
   hyphens: none;
