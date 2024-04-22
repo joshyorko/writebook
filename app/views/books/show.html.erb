@@ -149,7 +149,7 @@
         <%= form_with model: [ @book, Page.new ] do |form| %>
           <%= form.hidden_field :title %>
           <label>
-            <%= image_tag "page-text.svg", aria: { hidden: true }, size: 48 %>
+            <%= image_tag "page-text.svg", aria: { hidden: true }, size: 48, class: "colorize--black" %>
             <%= tag.button class: "btn btn--positive center margin-block-start-half txt-small" do %>
               <%= image_tag "add.svg", aria: { hidden: true }, size: 48 %>
               <span class="for-screen-reader">Add a new text page</span>
@@ -162,7 +162,7 @@
         <%= form_with model: [ @book, Picture.new ] do |form| %>
           <%= form.hidden_field :title %>
           <label>
-            <%= image_tag "page-picture.svg", aria: { hidden: true }, size: 48 %>
+            <%= image_tag "page-picture.svg", aria: { hidden: true }, size: 48, class: "colorize--black" %>
             <%= tag.button class: "btn btn--positive center margin-block-start-half txt-small" do %>
               <%= image_tag "add.svg", aria: { hidden: true }, size: 48 %>
               <span class="for-screen-reader">Add a photo page</span>
@@ -175,7 +175,7 @@
         <%= form_with model: [ @book, Section.new ] do |form| %>
           <%= form.hidden_field :title %>
           <label>
-            <%= image_tag "page-section.svg", aria: { hidden: true }, size: 48 %>
+            <%= image_tag "page-section.svg", aria: { hidden: true }, size: 48, class: "colorize--black" %>
             <%= tag.button class: "btn btn--positive center margin-block-start-half txt-small" do %>
               <%= image_tag "add.svg", aria: { hidden: true }, size: 48 %>
               <span class="for-screen-reader">Add a section page</span>
