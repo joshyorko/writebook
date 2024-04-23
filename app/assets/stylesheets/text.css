@@ -1,7 +1,7 @@
 :is(h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6) {
   font-weight: 800;
   hyphens: auto;
-  letter-spacing: -0.03ch;
+  letter-spacing: -0.02ch;
   line-height: calc(2px + 2ex + 2px);
   margin-block: 0.65em;
   overflow-wrap: break-word;

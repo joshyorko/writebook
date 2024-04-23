@@ -82,8 +82,8 @@
 </aside>
 
 <%= arrangement_tag @book, class: "toc__container full-width txt-align-center" do %>
-  <h1 class="txt-align-start txt-xx-large margin-block-none flex flex-column gap" style="row-gap: 0.1lh;">
-    <strong class="flex align-center gap-half">
+  <h1 class="txt-align-start margin-block-none flex flex-column gap" style="row-gap: 0.1lh;">
+    <strong class="book__title flex align-center gap-half">
       <%= @book.title %>
 
       <div data-controller="popup" class="txt-medium">
@@ -110,8 +110,8 @@
         </dialog>
       </div>
     </strong>
-    <small class="txt-normal txt-large txt-tight-lines"><%= @book.subtitle %></small>
-    <small class="txt-normal txt-large translucent txt-tight-lines"><%= @book.author %></small>
+    <small class="book__subtitle txt-normal txt-tight-lines"><%= @book.subtitle %></small>
+    <small class="book__author txt-normal translucent txt-tight-lines"><%= @book.author %></small>
   </h1>
 
   <div class="flex gap-half">
