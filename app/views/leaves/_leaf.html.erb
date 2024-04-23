@@ -1,5 +1,5 @@
 <li class="toc__leaf toc__leaf--<%= leaf.leafable_name %> <%= local_assigns[:css_class] %>" id="<%= dom_id(leaf) %>" data-arrangement-target="item" data-id="<%= leaf.id %>">
-  <%= image_tag "handle.svg", aria: { hidden: true }, size: 24, class: "toc__handle" %>
+  <%= image_tag "handle.svg", aria: { hidden: true }, size: 24, class: "toc__handle colorize--black" %>
 
   <%= link_to leafable_path(leaf), class: "toc__thumbnail", target: "_top" do %>
     <%= leaf.title if leaf.leafable.is_a?(Section) %>

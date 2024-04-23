@@ -1,0 +1,52 @@
+house-md {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.house-md-content {
+  caret-color: var(--color-link);
+  flex-grow: 1;
+  font-family: var(--font-sans);
+  hyphens: none;
+  min-block-size: 20lh;
+  text-align: left;
+  text-justify: unset;
+  white-space: break-spaces;
+
+  &:active, &:focus{
+    border:none;
+    outline:none;
+  }
+
+  p {
+    hyphens: none;
+  }
+}
+
+house-md-toolbar {
+  button {
+    align-items: center;
+    appearance: none;
+    background-color: transparent;
+    aspect-ratio: 1;
+    border-radius: 0.5em;
+    display: inline-flex;
+    inline-size: 2em;
+    border: none;
+    color: var(--color-ink);
+    cursor: pointer;
+    font-size: inherit;
+    justify-content: center;
+    padding: 0;
+    transition: background-color 0.3s ease;
+
+    &:is(:focus, :hover) {
+      background-color: var(--color-border-darker);
+    }
+
+    &:is(:active) {
+      background-color: var(--color-selected-dark);
+    }
+  }
+}

@@ -1,16 +1,3 @@
-.page__editor {
-  caret-color: var(--color-link);
-  font-family: var(--font-sans);
-  hyphens: none;
-  min-block-size: 20lh;
-  text-align: left;
-  text-justify: unset;
-
-  p {
-    hyphens: none;
-  }
-}
-
 .page__picker {
   -webkit-backdrop-filter: blur(20px);
   backdrop-filter: blur(20px);
