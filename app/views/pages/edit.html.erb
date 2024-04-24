@@ -35,12 +35,10 @@
       <%= image_tag "text-bold.svg", aria: { hidden: "true" }, size: "16" %>
       <span class="for-screen-reader">Text style: bold</span>
     <% end %>
-
     <%= house_button "italic" do %>
       <%= image_tag "text-italic.svg", aria: { hidden: "true" }, size: "16" %>
       <span class="for-screen-reader">Text style: italic</span>
     <% end %>
-
     <button type="button">
       <%= image_tag "text-quote.svg", aria: { hidden: "true" }, size: "18" %>
       <span class="for-screen-reader">Text style: quote</span>
@@ -61,7 +59,6 @@
       <%= image_tag "text-image.svg", aria: { hidden: "true" }, size: "18" %>
       <span class="for-screen-reader">Text add image</span>
     </button>
-
     <span class="flex-item-justify-end">
       <%= render "leaves/delete", leaf: @leaf %>
     </span>
