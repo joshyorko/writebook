@@ -4,9 +4,7 @@ class Books::Leaves::AttachmentsController < ApplicationController
   before_action :set_leaf
 
   def create
-    @attachment = @leaf.attachments.build
-    @attachment.file.attach params[:file]
-    @attachment.save!
+    @attachment = @leaf.attachments.create! attachable: @leaf, file: params[:file]
   end
 
   private

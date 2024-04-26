@@ -34,7 +34,7 @@ Rails.application.routes.draw do
     end
   end
 
-  get "/attachments/:id(.:ext)", to: "attachments#show", as: :attachment
+  get "/a/:id(.:ext)", to: "attachments#show", as: :attachment
 
   resources :qr_code, only: :show
   resources :users
