@@ -1,3 +1,5 @@
 <%= form_with model: [ book, page ], id: "page-editor", format: :html do |form| %>
-  <%= house_field "page[body]", page.body, toolbar: "house_toolbar", required: true, autofocus: true, class: "page__editor" %>
+  <%= house_field "page[body]", page.body, toolbar: "house_toolbar",
+        data: { uploads_url: book_page_uploads_path(book, page) },
+        required: true, autofocus: true, class: "page__editor" %>
 <% end %>

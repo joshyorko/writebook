@@ -29,8 +29,11 @@ Rails.application.routes.draw do
       scope module: "pages" do
         resources :edits, only: :show
       end
+      resources :uploads, only: %i[ create ], controller: "pages/uploads"
     end
   end
+
+  get "/attachments/:id.:ext", to: "attachments#show", as: :attachment
 
   resources :qr_code, only: :show
   resources :users
