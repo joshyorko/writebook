@@ -14,7 +14,9 @@ Rails.application.routes.draw do
   end
 
   resources :books do
-    resources :leaves
+    resources :leaves do
+      resources :attachments, only: %i[ create ], controller: "books/leaves/attachments"
+    end
 
     scope module: "books" do
       resources :accesses
@@ -29,11 +31,10 @@ Rails.application.routes.draw do
       scope module: "pages" do
         resources :edits, only: :show
       end
-      resources :uploads, only: %i[ create ], controller: "pages/uploads"
     end
   end
 
-  get "/attachments/:id.:ext", to: "attachments#show", as: :attachment
+  get "/attachments/:id(.:ext)", to: "attachments#show", as: :attachment
 
   resources :qr_code, only: :show
   resources :users
