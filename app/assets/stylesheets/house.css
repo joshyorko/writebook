@@ -25,7 +25,7 @@ house-md {
 }
 
 house-md-toolbar {
-  button {
+  button, label {
     align-items: center;
     appearance: none;
     background-color: transparent;
