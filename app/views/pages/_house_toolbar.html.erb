@@ -1,0 +1,40 @@
+<%= house_toolbar id: "house_toolbar", class: "flex align-center" do %>
+  <%= house_toolbar_button "bold", class: "flex-item-justify-end" do %>
+    <%= image_tag "text-bold.svg", aria: { hidden: "true" }, size: "16" %>
+    <span class="for-screen-reader">Text style: bold</span>
+  <% end %>
+
+  <%= house_toolbar_button "italic" do %>
+    <%= image_tag "text-italic.svg", aria: { hidden: "true" }, size: "16" %>
+    <span class="for-screen-reader">Text style: italic</span>
+  <% end %>
+
+  <%= house_toolbar_button "quote" do %>
+    <%= image_tag "text-quote.svg", aria: { hidden: "true" }, size: "18" %>
+    <span class="for-screen-reader">Text style: quote</span>
+  <% end %>
+
+  <%= house_toolbar_button "code" do %>
+    <%= image_tag "text-code.svg", aria: { hidden: "true" }, size: "18" %>
+    <span class="for-screen-reader">Text style: code</span>
+  <% end %>
+
+  <%= house_toolbar_button "bulletList" do %>
+    <%= image_tag "text-bullets.svg", aria: { hidden: "true" }, size: "18" %>
+    <span class="for-screen-reader">Text style: bulleted list</span>
+  <% end %>
+
+  <%= house_toolbar_button "numberList" do %>
+    <%= image_tag "text-numbers.svg", aria: { hidden: "true" }, size: "18" %>
+    <span class="for-screen-reader">Text style: numbered list</span>
+  <% end %>
+
+  <%= house_toolbar_file_upload_button do %>
+    <%= image_tag "text-image.svg", aria: { hidden: "true" }, size: "18" %>
+    <span class="for-screen-reader">Text add image</span>
+  <% end %>
+
+  <span class="flex-item-justify-end">
+    <%= render "leaves/delete", leaf: @leaf %>
+  </span>
+<% end %>
