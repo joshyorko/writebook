@@ -36,5 +36,12 @@
       <%= image_tag "share.svg", aria: { hidden: "true" }, size: 24, class: "colorize--black" %>
       <span class="for-screen-reader">Share public link</span>
     <% end %>
+
+    <% if Current.user.can_administer? %>
+      <%= tag.button class: "btn" do %>
+        <%= image_tag "pencil.svg", aria: { hidden: "true" }, size: 24, class: "colorize--black" %>
+        <span class="for-screen-reader">Edit link URL</span>
+      <% end %>
+    <% end %>
   </div>
 </div>
