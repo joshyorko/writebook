@@ -8,8 +8,9 @@ class ActionText::Markdown::UploadsController < ApplicationController
 
     @markdown = @record.safe_markdown_attribute params[:attribute_name]
     @markdown.uploads.attach [ params[:file] ]
+    @markdown.save!
 
-    @upload = @markdown.reload.uploads.attachments.last
+    @upload = @markdown.uploads.attachments.last
 
     render :create, status: :created, formats: :json
   end
