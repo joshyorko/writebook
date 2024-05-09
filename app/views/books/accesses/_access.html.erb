@@ -4,13 +4,13 @@
 
   <% if Current.user.can_administer? %>
     <label class="btn txt-small flex-item-no-shrink">
-      <%= check_box_tag "editor_ids[]", user.id, book.editable?(user: user), id: nil, disabled: user.current?, data: { action: "dependent-checkbox#input", dependent_checkbox_target: "dependant" } %>
+      <%= check_box_tag "editor_ids[]", user.id, book.editable?(user: user) || user == creating_user, id: nil, disabled: user.current?, data: { action: "dependent-checkbox#input", dependent_checkbox_target: "dependant" } %>
       <%= image_tag "write.svg", size: 24, aria: { hidden: "true" } %>
       <span class="for-screen-reader">Role: Writer</span>
     </label>
 
     <label class="btn txt-small flex-item-no-shrink">
-      <%= check_box_tag "reader_ids[]", user.id, book.accessable?(user: user), id: nil, disabled: user.current?, data: { action: "dependent-checkbox#input", dependent_checkbox_target: "dependee" } %>
+      <%= check_box_tag "reader_ids[]", user.id, book.accessable?(user: user) || user == creating_user, id: nil, disabled: user.current?, data: { action: "dependent-checkbox#input", dependent_checkbox_target: "dependee" } %>
       <%= image_tag "eye.svg", size: 24, aria: { hidden: "true" } %>
       <span class="for-screen-reader">Role: Reader</span>
     </label>

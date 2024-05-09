@@ -15,7 +15,7 @@
   </nav>
 <% end %>
 
-<%= render "books/form", book: @book %>
+<%= render "books/form", book: @book, users: @users, creating_user: nil %>
 
 <div class="flex flex-column justify-center txt-align-center margin-block-double">
   <%= button_to book_path(@book), method: :delete, class: "btn btn--negative center txt-medium",

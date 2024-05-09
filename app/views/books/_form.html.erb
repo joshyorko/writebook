@@ -18,7 +18,7 @@
   </div>
 
   <div class="border-radius center pad fill-shade flex flex-column gap margin-block-double">
-    <%= render partial: "books/accesses/access", collection: @users, as: :user, locals: { book: @book } %>
+    <%= render partial: "books/accesses/access", collection: users, as: :user, locals: { book: book, creating_user: creating_user } %>
   </div>
 
   <%= form.submit "Save", hidden: true %>
