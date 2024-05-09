@@ -44,7 +44,7 @@
 .arrangement-move-mode {
   .toc__leaf {
     &.arrangement-selected {
-      animation: arrangement-pulsing 1000ms infinite;
+      animation: pulse 1000ms infinite;
     }
   }
 }
@@ -66,16 +66,4 @@
   color: white;
   border-radius: 1rem;
   text-wrap: nowrap;
-}
-
-@keyframes arrangement-pulsing {
-  from {
-    opacity: 1;
-  }
-  50% {
-    opacity: 0.6;
-  }
-  to {
-    opacity: 1;
-  }
 }
