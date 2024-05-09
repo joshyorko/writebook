@@ -82,6 +82,7 @@
     }
   }
 
+  &:has([disabled]),
   [disabled] &[type=submit],
   &[type=submit]:disabled {
     cursor: not-allowed;
