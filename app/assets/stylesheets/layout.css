@@ -1,15 +1,16 @@
-#main {
+:where(#main) {
   --footer-height: calc((var(--block-space) * 2) + var(--btn-size));
 
   container-type: inline-size;
   font-size: var(--font-medium-container);
+  inline-size: 60ch;
   margin-block: var(--block-space) var(--footer-height);
   margin-inline: auto;
   max-inline-size: 100%;
-  padding-inline: var(--inline-space);
+  padding-inline: clamp(var(--inline-space), 5cqi, calc(var(--inline-space) * 3));
   text-align: start;
 
-  &.book {
+  &:where(.index) {
     column-gap: 3dvw;
     display: grid;
     grid-template-columns: minmax(200px, 18dvw) 1fr;
@@ -19,11 +20,6 @@
     @media (max-width: 80ch) {
       grid-template-columns: 1fr;
     }
-  }
-
-  &:where(.page) {
-    inline-size: 60ch;
-    padding-inline: clamp(var(--inline-space), 5cqi, calc(var(--inline-space) * 3));
   }
 
   @media print {
@@ -39,18 +35,14 @@
   }
 }
 
-#header {
-  border-block-end: var(--border-size, 0) solid var(--color-subtle);
+:where(#header) {
+  border-block-end: var(--border-size, 1px) solid var(--color-subtle);
   inset: 0 0 auto 0;
   position: sticky;
   view-transition-name: header;
 
   > nav {
     view-transition-name: nav;
-  }
-
-  &:has( + .page, + .book) {
-    --border-size: 1px;
   }
 
   @supports (animation-timeline: scroll()) {
@@ -60,7 +52,7 @@
   }
 }
 
-#footer {
+:where(#footer) {
   /* animation: slide-down linear both; */
   /* animation-timeline: scroll(); */
 	/* animation-range: 0 150px; */
