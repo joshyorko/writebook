@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.2].define(version: 2024_05_13_093914) do
+ActiveRecord::Schema[7.2].define(version: 2024_05_13_110858) do
   create_table "accesses", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "book_id", null: false
@@ -76,7 +76,9 @@ ActiveRecord::Schema[7.2].define(version: 2024_05_13_093914) do
     t.string "subtitle"
     t.string "author"
     t.datetime "published_at"
+    t.string "slug"
     t.index ["published_at"], name: "index_books_on_published_at"
+    t.index ["slug"], name: "index_books_on_slug", unique: true
   end
 
   create_table "edits", force: :cascade do |t|

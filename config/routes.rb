@@ -15,6 +15,8 @@ Rails.application.routes.draw do
 
   resources :books do
     resources :leaves
+    resource :publication, controller: "books/publications", only: %i[ show edit update ]
+
     scope module: "books" do
       namespace :leaves do
         resources :moves, only: :create
@@ -49,4 +51,6 @@ Rails.application.routes.draw do
   get "up" => "rails/health#show", as: :rails_health_check
   get "service-worker" => "rails/pwa#service_worker", as: :pwa_service_worker
   get "manifest" => "rails/pwa#manifest", as: :pwa_manifest
+
+  get "/:slug", to: "public/books#show", as: :public_book
 end

@@ -48,5 +48,6 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to book_url(book)
+    assert_equal "manual", book.slug
   end
 end

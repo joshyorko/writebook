@@ -27,12 +27,11 @@
 <aside class="txt-align-center">
   <%= image_tag @book.cover.attached? ? @book.cover : "default-cover.webp", alt: "Book cover", class: "book__cover margin-none" %>
 
-  <div class="flex flex-column gap margin-block-start pad fill-shade border-radius">
-    <% if @book.editable? %>
-      <%= render "publication", book: @book %>
+  <% if @book.editable? %>
+    <%= turbo_frame_tag @book, :publication do %>
+      <%= render "books/publications/publication", book: @book %>
     <% end %>
-    <%= render "public" %>
-  </div>
+  <% end %>
 </aside>
 
 <%= arrangement_tag @book, class: "arrangement__container toc__container full-width txt-align-center" do %>

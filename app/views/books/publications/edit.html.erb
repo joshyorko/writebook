@@ -1,0 +1,29 @@
+<%= turbo_frame_tag @book, :publication do %>
+  <div class="flex flex-column gap margin-block-start pad fill-shade border-radius">
+    <div class="flex flex-column align-center gap txt-medium">
+      <% public_url = public_book_url(slug: @book.slug) %>
+
+      <%= form_with model: @book, url: book_publication_path(@book) do |form| %>
+        <label class="flex flex-column gap full-width txt-align-center">
+          <strong id="public_link_label" class="invite-label for-screen-reader">Public link to this book</strong>
+          <span class="flex align-center gap margin-inline">
+            <%= request.host %>/<%= form.text_field :slug, class: "input fill-white", autofocus: true,
+                  pattern: "^[\\-A-Za-z0-9]+$", title: "Enter letters, numbers, or hyphens only" %>
+          </span>
+        </label>
+
+        <div class="flex align-center gap margin-inline margin-block-start">
+          <button type="submit" class="btn btn--positive flex-item-justify-end">
+            <%= image_tag "check.svg", aria: { hidden: true }, size: 24 %>
+            <span class="for-screen-reader">Save</span>
+          </button>
+
+          <%= link_to book_path(@book), class: "btn flex-item-justify-start" do %>
+            <%= image_tag "remove.svg", aria: { hidden: true }, size: 24 %>
+            <span class="for-screen-reader">Cancel</span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
