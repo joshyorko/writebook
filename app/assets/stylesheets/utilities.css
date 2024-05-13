@@ -7,16 +7,16 @@
   --block-space-half: calc(var(--block-space) / 2);
   --block-space-double: calc(var(--block-space) * 2);
 
-  --font-medium-container: clamp(1rem, 2.5cqi, 1.5rem);
+  --font-medium-responsive: clamp(1rem, 2.5cqi, 1.5rem);
 }
 
 /* Text */
 .txt-small { font-size: 0.8rem; }
 .txt-medium { font-size: 1rem; }
+.txt-medium--responsive { font-size: var(--font-medium-responsive); }
 .txt-large { font-size: 1.4rem; }
 .txt-x-large { font-size: 1.8rem; }
 .txt-xx-large { font-size: 2.4rem; }
-.txt-medium-container { font-size: var(--font-medium-container); }
 
 .txt-align-center { text-align: center; }
 .txt-align-start { text-align: start; }

@@ -2,7 +2,7 @@
   --footer-height: calc((var(--block-space) * 2) + var(--btn-size));
 
   container-type: inline-size;
-  font-size: var(--font-medium-container);
+  font-size: var(--font-medium-responsive);
   inline-size: 60ch;
   margin-block: var(--block-space) var(--footer-height);
   margin-inline: auto;
