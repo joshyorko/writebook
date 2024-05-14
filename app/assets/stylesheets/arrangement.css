@@ -60,8 +60,7 @@
 }
 
 .arrangement-placeholder {
-  background-color: oklch(var(--lch-gray) / 0.5);
-  border-color: var(--color-border);
-  border-style: solid;
+  background-color: var(--color-subtle-light);
+  border: 1px dashed var(--color-subtle-dark);
   border-radius: 0.2em;
 }
