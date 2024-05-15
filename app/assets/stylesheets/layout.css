@@ -4,9 +4,10 @@
   container-type: inline-size;
   font-size: var(--font-medium-responsive);
   inline-size: 60ch;
-  margin-block: var(--block-space) var(--footer-height);
+  margin-block: var(--block-space);
   margin-inline: auto;
   max-inline-size: 100%;
+  padding-block: 0 var(--footer-height);
   padding-inline: clamp(var(--inline-space), 5cqi, calc(var(--inline-space) * 3));
   text-align: start;
 
