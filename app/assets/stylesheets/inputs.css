@@ -132,16 +132,8 @@
     --outline-size: 0;
     --outline-color: transparent;
 
-    field-sizing: content;
-    inline-size: auto;
-    min-inline-size: 20ch;
+    inline-size: 100%;
     outline: 0;
-
-    &.full-width {
-      field-sizing: unset;
-      inline-size: 100%;
-      min-inline-size: unset;
-    }
   }
 
   &:has(.input:is(
