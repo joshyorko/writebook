@@ -15,6 +15,7 @@
 
   display: block;
   inset: var(--progress, 0) calc(var(--icon-size) / 4) auto calc(var(--icon-size) * -0.5);
+  margin-block-start: calc(var(--icon-size) * -0.5);
   position: absolute;
 
   .bookmark__icon {
@@ -28,7 +29,7 @@
     }
 
     &::after {
-      border-block-end: 1px dashed var(--color-marker);
+      border-block-end: 0.07em dashed var(--color-marker);
       content: "";
       display: flex;
       flex-grow: 1;
@@ -40,7 +41,7 @@
 .bookmark__link::after {
   background-color: transparent;
   content: "";
-  offset: 0;
+  inset: 0;
   pointer-events: auto;
   position: absolute;
   z-index: 1;

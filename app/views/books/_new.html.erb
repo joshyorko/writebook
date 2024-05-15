@@ -1,11 +1,16 @@
-<figure class="library__book">
-  <div class="txt-undecorated txt-ink flex flex-column gap-half" data-controller="popup">
-    <%= image_tag "default-cover.webp", alt: "Book cover", class: "book__cover", data: { action: "click->popup#toggle" }, style: "cursor: pointer" %>
-    <div class="txt-small txt-align-center">
-      <%= link_to new_book_path, class: "btn btn--positive center" do %>
-        <%= image_tag "add.svg", aria: { hidden: true }, size: 24 %>
+<figure class="library__book position-relative">
+  <div class="flex flex-column gap-half">
+    <div class="flex-inline center">
+      <%= image_tag "default-cover.webp", alt: "Book cover", class: "book__cover" %>
+      <%= link_to new_book_path, class: "bookmark__link" do %>
         <span class="for-screen-reader">Create a new book</span>
       <% end %>
     </div>
+    <h2 class="margin-none flex flex-column txt-tight-lines txt-medium">
+      <span class="btn btn--positive center">
+        <%= image_tag "add.svg", aria: { hidden: true }, size: 24 %>
+        <span class="for-screen-reader"></span>
+      </span>
+    </h2>
   </div>
 </figure>

@@ -81,7 +81,7 @@
   .toc__link::after {
     background-color: transparent;
     content: "";
-    offset: 0;
+    inset: 0;
     pointer-events: auto;
     position: absolute;
     z-index: 1;
