@@ -2,7 +2,10 @@
   <%= image_tag "handle.svg", aria: { hidden: true }, size: 24, class: "arrangement__handle translucent colorize--black" %>
 
   <div class="toc__thumbnail">
-    <%= link_to "Open #{ leaf.title }", leafable_path(leaf), class: "toc__link", data: { turbo_frame: "_top" } %>
+    <%= link_to leafable_path(leaf), class: "toc__link", data: { turbo_frame: "_top" } do %>
+      <span class="for-screen-reader">Open <%= leaf.title %></span>
+    <% end %>
+
     <%= leaf.title if leaf.leafable.is_a?(Section) %>
 
     <%= leaf.leafable.body.to_html if leaf.leafable.is_a?(Page) %>
