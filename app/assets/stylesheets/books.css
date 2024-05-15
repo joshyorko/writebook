@@ -22,13 +22,9 @@
     flex-grow: 1;
 
     svg {
-      background-color: oklch(var(--lch-orange) / 0.2);
-      border: 1px solid var(--color-marker);
-      border-radius: var(--icon-size);
       block-size: var(--icon-size);
       flex-shrink: 0;
       inline-size: var(--icon-size);
-      padding: calc(var(--icon-size) / 8);
     }
 
     &::after {
