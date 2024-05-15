@@ -140,6 +140,7 @@
     &.full-width {
       field-sizing: unset;
       inline-size: 100%;
+      min-inline-size: unset;
     }
   }
 
