@@ -39,11 +39,6 @@
     grid-area: 1 / 1;
   }
 
-  img {
-    background-color: var(--color-bg);
-    padding: 1em;
-  }
-
   input[type="file"] {
     block-size: 100%;
     font-size: 0;
