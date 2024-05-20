@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import { getCookie, setCookie } from "lib/cookie"
+import { readCookie, setCookie } from "helpers/cookie_helpers"
 
 export default class extends Controller {
   static targets = [ "switch" ]
@@ -15,8 +15,8 @@ export default class extends Controller {
   }
 
   #restoreViewPref(id) {
-    const viewType = getCookie(id) || "list"
-    this.switchTargets.forEach((switchTarget) => {
+    const viewType = readCookie(id) || "list"
+    this.switchTargets.forEach(switchTarget => {
       switchTarget.checked = switchTarget.dataset.tocViewTypeValue === viewType
     }
   )}

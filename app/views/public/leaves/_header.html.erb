@@ -1,4 +1,4 @@
-<nav>
+<%= leaf_nav_tag(leaf) do %>
   <%= link_to public_book_path(book.slug), class: "btn flex-item-justify-start" do %>
     <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
     <span class="for-screen-reader">Go back</span>
@@ -14,4 +14,4 @@
     <%= image_tag "expand.svg", aria: { hidden: true }, size: 24 %>
     <span class="for-screen-reader">Enter fullscreen</span>
   </button>
-</nav>
+<% end %>
