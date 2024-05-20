@@ -10,11 +10,15 @@ export default class extends Controller {
   }
 
   #markLastReadLeaf() {
-    const leafId = readCookie(`reading_progress_${this.bookIdValue}`)
-    const leafElement = leafId && this.element.querySelector(`#leaf_${leafId}`)
+    const readingProgress = readCookie(`reading_progress_${this.bookIdValue}`)
 
-    if (leafElement) {
-      leafElement.classList.add(this.lastReadClass)
+    if (readingProgress) {
+      const [ leafId ] = readingProgress.split("/")
+      const leafElement = leafId && this.element.querySelector(`#leaf_${leafId}`)
+
+      if (leafElement) {
+        leafElement.classList.add(this.lastReadClass)
+      }
     }
   }
 }
