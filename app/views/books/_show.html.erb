@@ -4,12 +4,12 @@
 <% content_for :head do %>
   <%= tag.meta property: "og:title", content: book.title %>
   <%= tag.meta property: "og:description", content: book.subtitle %>
-  <%= tag.meta property: "og:image", content: "#{root_url}#{url_for(book&.cover)}" if book&.cover.any? %>
+  <%= tag.meta property: "og:image", content: "#{root_url}#{url_for(book.cover)}" unless book.cover.blank? %>
   <%= tag.meta property: "og:url", content: book_url(book) %>
 
   <%= tag.meta property: "twitter:title", content: book.title %>
   <%= tag.meta property: "twitter:description", content: book.subtitle %>
-  <%= tag.meta property: "twitter:image", content: "#{root_url}#{url_for(book&.cover)}" if book&.cover.any? %>
+  <%= tag.meta property: "twitter:image", content: "#{root_url}#{url_for(book.cover)}" unless book.cover.blank? %>
   <%= tag.meta property: "twitter:card", content: "summary_large_image" %>
 <% end %>
 
