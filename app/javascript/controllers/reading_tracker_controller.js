@@ -1,6 +1,6 @@
 import { Controller } from "@hotwired/stimulus"
 import { nextFrame } from "helpers/timing_helpers"
-import { setCookie, readCookie } from "helpers/cookie_helpers"
+import { getReadingProgress, storeReadingProgress } from "helpers/reading_progress_helpers"
 
 export default class extends Controller {
   static values = { bookId: Number, leafId: Number }
@@ -24,7 +24,9 @@ export default class extends Controller {
   }
 
   #scrollToLastReadParagraph() {
-    const [ leafId, lastReadParagraphIndex ] = this.#getStoredProgress()
+    const [ leafId, lastReadParagraphIndex ] = getReadingProgress(this.bookIdValue)
+
+    console.log(`Scrolling to last read paragraph ${lastReadParagraphIndex} in leaf ${leafId}`)
 
     if (leafId === this.leafIdValue && lastReadParagraphIndex > 0) {
       const lastReadParagraph = this.paragraphs[lastReadParagraphIndex]
@@ -61,18 +63,7 @@ export default class extends Controller {
     }
   }
 
-  #getStoredProgress() {
-    const progress = readCookie(`reading_progress_${this.bookIdValue}`)
-
-    if (progress) {
-      const [ leafId, lastReadParagraph ] = progress.split("/")
-      return [ parseInt(leafId), parseInt(lastReadParagraph) || 0 ]
-    } else {
-      return [ this.leafIdValue, 0 ]
-    }
-  }
-
   #storeProgress() {
-    setCookie(`reading_progress_${this.bookIdValue}`, `${this.leafIdValue}/${this.lastReadParagraphIndex}`)
+    storeReadingProgress(this.bookIdValue, this.leafIdValue, this.lastReadParagraphIndex)
   }
 }

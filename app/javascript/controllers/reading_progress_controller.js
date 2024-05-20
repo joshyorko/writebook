@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import { readCookie } from "helpers/cookie_helpers"
+import { getReadingProgress } from "helpers/reading_progress_helpers"
 
 export default class extends Controller {
   static values = { bookId: Number }
@@ -10,15 +10,11 @@ export default class extends Controller {
   }
 
   #markLastReadLeaf() {
-    const readingProgress = readCookie(`reading_progress_${this.bookIdValue}`)
+    const [ leafId ] = getReadingProgress(this.bookIdValue)
+    const leafElement = leafId && this.element.querySelector(`#leaf_${leafId}`)
 
-    if (readingProgress) {
-      const [ leafId ] = readingProgress.split("/")
-      const leafElement = leafId && this.element.querySelector(`#leaf_${leafId}`)
-
-      if (leafElement) {
-        leafElement.classList.add(this.lastReadClass)
-      }
+    if (leafElement) {
+      leafElement.classList.add(this.lastReadClass)
     }
   }
 }
