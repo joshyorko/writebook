@@ -15,7 +15,7 @@
         <span class="for-screen-reader">Show join link QR code</span>
       <% end %>
 
-      <dialog class="dialog panel" data-popup-target="popup" data-action="click->popup#close" style="--panel-size: max-content">
+      <dialog class="dialog panel" data-popup-target="menu" data-action="click->popup#close" style="--panel-size: max-content">
         <%= qr_code_image(url) %>
 
         <form method="dialog" class="margin-block-start flex justify-center">

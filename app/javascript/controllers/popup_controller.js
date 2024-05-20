@@ -12,7 +12,7 @@ export default class extends Controller {
   }
 
   open() {
-    this.menuTarget.show()
+    this.menuTarget.showModal()
     this.#orient()
   }
 
