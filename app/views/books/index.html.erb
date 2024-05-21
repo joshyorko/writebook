@@ -5,7 +5,7 @@
   <nav>
     <%= button_to session_path, method: :delete, class: "btn flex-item-justify-end" do %>
       <%= image_tag "logout.svg", aria: { hidden: true }, size: 24 %>
-      <span class="for-screen-reader">Mange people</span>
+      <span class="for-screen-reader">Sign out</span>
     <% end %>
 
     <div class="breadcrumbs flex-item-justify-end">
@@ -15,7 +15,7 @@
     <% if Current.user.can_administer? %>
       <%= link_to users_path, class: "btn flex-item-justify-end" do %>
         <%= image_tag "people.svg", aria: { hidden: true }, size: 24 %>
-        <span class="for-screen-reader">Mange people</span>
+        <span class="for-screen-reader">Manage people</span>
       <% end %>
     <% end %>
   </nav>
