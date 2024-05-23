@@ -1,5 +1,5 @@
 <%= leaf_nav_tag(leaf) do %>
-  <%= link_to book, class: "btn flex-item-justify-start" do %>
+  <%= link_to "javascript: window.history.back()", class: "btn flex-item-justify-start" do %>
     <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
     <span class="for-screen-reader">Go back</span>
   <% end %>

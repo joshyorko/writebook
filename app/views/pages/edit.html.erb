@@ -2,7 +2,7 @@
 
 <% content_for :header do %>
   <nav>
-    <%= link_to leafable_path(@leaf), class: "btn flex-item-justify-start" do %>
+    <%= link_to "javascript: window.history.back()", class: "btn flex-item-justify-start" do %>
       <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">Cancel and go back</span>
     <% end %>
