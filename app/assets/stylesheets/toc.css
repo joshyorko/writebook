@@ -40,6 +40,10 @@
     row-gap: calc(var(--block-space) * 0.3);
     text-align: start;
   }
+
+  .toc__container:where(:has(#toc-grid:checked)) & {
+    max-inline-size: 320px;
+  }
 }
 
 .toc__bookmark {
