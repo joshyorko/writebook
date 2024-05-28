@@ -1,11 +1,11 @@
 module TranslationsHelper
   TRANSLATIONS = {
-    book_author: { "🇺🇸": "Author","🇪🇸": "Autor","🇫🇷": "Auteur","🇮🇳": "लेखक","🇩🇪": "Autor","🇧🇷": "Autor" },
-    book_subtitle: { "🇺🇸": "Subtitle","🇪🇸": "Subtítulo","🇫🇷": "Sous-titre","🇮🇳": "उपशीर्षक","🇩🇪": "Untertitel","🇧🇷": "Subtítulo" },
-    book_title: { "🇺🇸": "Book title","🇪🇸": "Título del libro","🇫🇷": "Titre du livre","🇮🇳": "पुस्तक का शीर्षक","🇩🇪": "Buchtitel","🇧🇷": "Título do livro" },
+    book_author: { "🇺🇸": "Author", "🇪🇸": "Autor", "🇫🇷": "Auteur", "🇮🇳": "लेखक", "🇩🇪": "Autor", "🇧🇷": "Autor" },
+    book_subtitle: { "🇺🇸": "Subtitle", "🇪🇸": "Subtítulo", "🇫🇷": "Sous-titre", "🇮🇳": "उपशीर्षक", "🇩🇪": "Untertitel", "🇧🇷": "Subtítulo" },
+    book_title: { "🇺🇸": "Book title", "🇪🇸": "Título del libro", "🇫🇷": "Titre du livre", "🇮🇳": "पुस्तक का शीर्षक", "🇩🇪": "Buchtitel", "🇧🇷": "Título do livro" },
     email_address:  { "🇺🇸": "Enter your email address", "🇪🇸": "Introduce tu correo electrónico", "🇫🇷": "Entrez votre adresse courriel", "🇮🇳": "अपना ईमेल पता दर्ज करें", "🇩🇪": "Geben Sie Ihre E-Mail-Adresse ein", "🇧🇷": "Insira seu endereço de email" },
     password: { "🇺🇸": "Enter your password", "🇪🇸": "Introduce tu contraseña", "🇫🇷": "Saisissez votre mot de passe", "🇮🇳": "अपना पासवर्ड दर्ज करें", "🇩🇪": "Geben Sie Ihr Passwort ein", "🇧🇷": "Insira sua senha" },
-    picture_caption: { "🇺🇸": "Picture caption","🇪🇸": "Subtítulo de la imagen","🇫🇷": "Légende de l'image","🇮🇳": "चित्र का कैप्शन","🇩🇪": "Bildunterschrift","🇧🇷": "Legenda da imagem" },
+    picture_caption: { "🇺🇸": "Picture caption", "🇪🇸": "Subtítulo de la imagen", "🇫🇷": "Légende de l'image", "🇮🇳": "चित्र का कैप्शन", "🇩🇪": "Bildunterschrift", "🇧🇷": "Legenda da imagem" },
     user_name: { "🇺🇸": "Enter your name", "🇪🇸": "Introduce tu nombre", "🇫🇷": "Entrez votre nom", "🇮🇳": "अपना नाम दर्ज करें", "🇩🇪": "Geben Sie Ihren Namen ein", "🇧🇷": "Insira seu nome" },
     update_password: { "🇺🇸": "Change password", "🇪🇸": "Cambiar contraseña", "🇫🇷": "Changer le mot de passe", "🇮🇳": "पासवर्ड बदलें", "🇩🇪": "Passwort ändern", "🇧🇷": "Alterar senha" }
   }
