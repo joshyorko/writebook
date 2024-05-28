@@ -45,15 +45,12 @@
 }
 
 /* Base styles */
-:is(house-md-editor, house-md-toolbar) {
-}
-
 a:not([class]) {
   color: var(--house-color-link);
   text-decoration-skip-ink: auto;
 }
 
-:is(a, button, input, textarea) {
+:where(a, button, input, textarea) {
   --outline-size: max(2px, 0.08em);
   --outline-style: solid;
   --house-outline-color: currentColor;
@@ -80,7 +77,7 @@ a:not([class]) {
 }
 
 /* Editor */
-house-md {
+:where(house-md) {
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -91,7 +88,7 @@ house-md {
 }
 
 /* Toolbar */
-house-md-toolbar {
+:where(house-md-toolbar) {
   background-color: inherit;
   border-radius: 0.5em;
   color: currentColor;
@@ -134,7 +131,7 @@ house-md-toolbar {
 }
 
 /* Markdown Content */
-.house-md-content {
+:where(.house-md-content) {
   caret-color: var(--color-link);
   flex-grow: 1;
   font-family: var(--font-sans);
@@ -142,12 +139,13 @@ house-md-toolbar {
   text-align: left;
   white-space: break-spaces;
 
-  &:active, &:focus{
-    border:none;
-    outline:none;
+  &:active,
+  &:focus {
+    border: none;
+    outline: none;
   }
 
-  :is(.h1, .h2, .h3, .h4, .h5, .h6) {
+  :where(.h1, .h2, .h3, .h4, .h5, .h6) {
     display: block;
     font-weight: 600;
     margin-block: 0;
@@ -213,7 +211,7 @@ house-md-toolbar {
 }
 
 /* Uploads */
-house-md-upload {
+:where(house-md-upload) {
   border-radius: 0.5em;
   margin-block: 0.5ex;
   position: relative;
@@ -226,7 +224,7 @@ house-md-upload {
   }
 }
 
-.md-close {
+:where(.md-close) {
   appearance: none;
   display: none;
   inline-size: 1em;
@@ -255,7 +253,7 @@ house-md-upload {
   }
 }
 
-.md-file {
+:where(.md-file) {
   font-weight: normal;
 
   house-md-upload[status="complete"] & {
@@ -263,7 +261,7 @@ house-md-upload {
   }
 }
 
-.md-progress-bar {
+:where(.md-progress-bar) {
   -webkit-appearance: none;
   appearance: none;
   background-color: var(--house-color-subtle);
