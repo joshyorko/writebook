@@ -1,50 +1,10 @@
-class PicturesController < ApplicationController
-  include SetBookLeaf
-
-  def new
-    @picture = Picture.new
-  end
-
-  def create
-    @leafable = new_picture
-    @book.leaves.create! leaf_params.merge(leafable: @leafable)
-
-    respond_to do |format|
-      format.turbo_stream { render }
-      format.html { redirect_to @book }
-    end
-  end
-
-  def show
-  end
-
-  def edit
-  end
-
-  def update
-    @leaf.edit leafable_params: picture_params, leaf_params: leaf_params
-
-    respond_to do |format|
-      format.turbo_stream { render }
-      format.html { redirect_to leafable_url(@leaf) }
-    end
-  end
-
-  def destroy
-    @leaf.trashed!
-    redirect_to @book
-  end
-
+class PicturesController < LeafablesController
   private
-    def new_picture
-      Picture.new picture_params
+    def leafable_class
+      Picture
     end
 
-    def picture_params
+    def leafable_params
       params.require(:picture).permit(:image)
-    end
-
-    def leaf_params
-      params.require(:leaf).permit(:title)
     end
 end

@@ -1,56 +1,16 @@
-class PagesController < ApplicationController
-  include SetBookLeaf
-
+class PagesController < LeafablesController
   before_action :forget_reading_progress, except: :show
-
-  def new
-    @page = Page.new
-  end
-
-  def create
-    @leafable = new_page
-    @book.leaves.create! leaf_params.merge(leafable: @leafable)
-
-    respond_to do |format|
-      format.turbo_stream { render }
-      format.html { redirect_to @book }
-    end
-  end
-
-  def show
-  end
-
-  def edit
-  end
-
-  def update
-    @leaf.edit leafable_params: page_params, leaf_params: leaf_params
-
-    respond_to do |format|
-      format.turbo_stream { render }
-      format.html { redirect_to leafable_url(@leaf) }
-    end
-  end
-
-  def destroy
-    @leaf.trashed!
-    redirect_to @book
-  end
 
   private
     def forget_reading_progress
       cookies.delete "reading_progress_#{@book.id}"
     end
 
-    def new_page
-      Page.new page_params
+    def leafable_class
+      Page
     end
 
-    def page_params
+    def leafable_params
       params.require(:page).permit(:body)
-    end
-
-    def leaf_params
-      params.require(:leaf).permit(:title)
     end
 end
