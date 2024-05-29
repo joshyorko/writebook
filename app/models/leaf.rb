@@ -5,7 +5,6 @@ class Leaf < ApplicationRecord
   positioned_within :book, association: :leaves
 
   delegated_type :leafable, types: Leafable::TYPES, dependent: :destroy
-  delegate :title, to: :leafable
 
   scope :with_leafables, -> { includes(:leafable) }
 

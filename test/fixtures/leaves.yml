@@ -1,23 +1,27 @@
 welcome_section:
   book: handbook
+  title: The Welcome Section
   leafable: welcome (Section)
   position_score: 1
   status: published
 
 welcome_page:
   book: handbook
+  title: Welcome to The Handbook!
   leafable: welcome (Page)
   position_score: 2
   status: published
 
 summary_page:
   book: handbook
+  title: Summary
   leafable: summary (Page)
   position_score: 3
   status: published
 
 reading_picture:
   book: handbook
+  title: Reading
   leafable: reading (Picture)
   position_score: 4
   status: published

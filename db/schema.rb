@@ -100,26 +100,24 @@ ActiveRecord::Schema[7.2].define(version: 2024_05_28_211134) do
     t.string "status", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "title", null: false
     t.index ["book_id"], name: "index_leaves_on_book_id"
     t.index ["leafable_type", "leafable_id"], name: "index_leafs_on_leafable"
   end
 
   create_table "pages", force: :cascade do |t|
-    t.string "title"
     t.text "body"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
   create_table "pictures", force: :cascade do |t|
-    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "caption"
   end
 
   create_table "sections", force: :cascade do |t|
-    t.string "title"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

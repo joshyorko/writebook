@@ -93,6 +93,7 @@
     }
   }
 
+  &[disabled],
   &:has([disabled]),
   [disabled] &[type=submit],
   &[type=submit]:disabled {

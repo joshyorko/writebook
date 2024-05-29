@@ -4,21 +4,39 @@ module Leaf::Editable
   included do
     has_many :edits, dependent: :delete_all
 
-    after_create :record_initial_edit
     after_update :record_moved_to_trash, if: :was_trashed?
   end
 
-  def edit(leafable_params)
-    transaction do
-      new_leafable = leafable.dup.tap { |l| l.update!(leafable_params) }
-      update!(leafable: new_leafable)
-      edits.revision.create!(leafable: new_leafable)
+  def edit(leafable_params: {}, leaf_params: {})
+    if will_change_leafable?(leafable_params)
+      update_leafable leaf_params, leafable_params
+    else
+      update! leaf_params
     end
   end
 
   private
-    def record_initial_edit
-      edits.creation.create!(leafable: leafable)
+    def will_change_leafable?(leafable_params)
+      leafable_params.select do |key, value|
+        leafable.attributes[key.to_s] != value
+      end.present?
+    end
+
+    def update_leafable(leaf_params, leafable_params)
+      transaction do
+        new_leafable = dup_leafable_with_attachments leafable
+        new_leafable.update!(leafable_params)
+        edits.revision.create!(leafable: leafable)
+        update! leaf_params.merge(leafable: new_leafable)
+      end
+    end
+
+    def dup_leafable_with_attachments(leafable)
+      leafable.dup.tap do |new|
+        attachment_reflections.each do |name, _|
+          new.send(name).attach(self.send(name).blob)
+        end
+      end
     end
 
     def record_moved_to_trash

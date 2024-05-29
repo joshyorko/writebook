@@ -14,7 +14,6 @@ Rails.application.routes.draw do
   end
 
   resources :books do
-    resources :leaves
     resource :publication, controller: "books/publications", only: %i[ show edit update ]
     resource :bookmark, controller: "books/bookmarks", only: :show
 
@@ -26,10 +25,12 @@ Rails.application.routes.draw do
 
     resources :sections
     resources :pictures
-    resources :pages do
-      scope module: "pages" do
-        resources :edits, only: :show
-      end
+    resources :pages
+  end
+
+  resources :pages, only: [] do
+    scope module: "pages" do
+      resources :edits, only: :show
     end
   end
 

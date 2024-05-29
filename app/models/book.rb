@@ -7,10 +7,10 @@ class Book < ApplicationRecord
   scope :ordered, -> { order(:title) }
   scope :published, -> { where(published: true) }
 
-  def press(leafable)
+  def press(leafable, leaf_params)
     transaction do
       leafable.save!
-      leaves.create! leafable: leafable
+      leaves.create! leaf_params.merge(leafable: leafable)
     end
   end
 end

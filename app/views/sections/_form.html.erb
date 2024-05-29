@@ -1,4 +1,4 @@
 <%= form_with model: [ book, section ], id: "section-editor", format: :html do |form| %>
-  <h1><%= form.text_field :title, required: true, autofocus: true, class: "input full-width", autocomplete: "off", data: { controller: "autoselect" }  %></h1>
+  <h1><%= text_field_tag "leaf[title]", section.title, required: true, autofocus: true, class: "input full-width", autocomplete: "off", data: { controller: "autoselect" }  %></h1>
   <%= form.submit "Save", hidden: true %>
 <% end %>

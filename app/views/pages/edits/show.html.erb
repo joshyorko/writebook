@@ -1,4 +1,5 @@
 <% content_for(:title) { "Changes to #{ @page.title }" } %>
+<% @layout_class = "books" %>
 
 <% content_for :header do %>
   <nav>
@@ -11,15 +12,56 @@
       <%= link_to books_path do %>
         <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
       <% end %> ▸
-      <%= link_to @book.title, @book %> ▸
-      <strong><%= @edit.leafable.title %></strong>
+      <%= link_to @page.book.title, @page.book %> ▸
+      <strong><%= @page.title %></strong>
     </div>
   </nav>
 <% end %>
 
-<header class="txt-align-center">
-  <span class="btn btn--reversed txt-medium center">Reviewing edits in this version</span>
-</header>
+<div class="library">
+  <section>
+    <%= turbo_frame_tag :previous_version do %>
+      <header class="flex align-center justify-center gap">
+        <% if @edit.previous %>
+          <%= link_to page_edit_path(@page, @edit.previous), class: "btn btn--reversed txt-small" do %>
+            <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
+            <span class="for-screen-reader">Previous version</span>
+          <% end %>
+        <% else %>
+          <span class="btn btn-reversed txt-small" disabled>
+            <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
+            <span class="for-screen-reader">Previous version</span>
+          </span>
+        <% end %>
 
-<h1><%= format_diff_changes(@edit.generate_diff(:title)) %></h1>
-<%= format_diff_changes(@edit.generate_diff(:body)) %>
+        <h2 class="btn btn--reversed txt-medium margin-none overflow-ellipsis">
+          <%= time_ago_in_words(@edit.created_at) %> ago
+        </h2>
+
+        <% if @edit.next %>
+          <%= link_to page_edit_path(@page, @edit.next), class: "btn btn--reversed txt-small" do %>
+            <%= image_tag "arrow-right.svg", aria: { hidden: true }, size: 24 %>
+            <span class="for-screen-reader">Next version</span>
+          <% end %>
+        <% else %>
+          <span class="btn btn-reversed txt-small" disabled>
+            <%= image_tag "arrow-right.svg", aria: { hidden: true }, size: 24 %>
+            <span class="for-screen-reader">Next version</span>
+          </span>
+        <% end %>
+      </header>
+
+      <%= @edit.page.body.to_html %>
+    <% end %>
+  </section>
+
+  <section>
+    <header class="flex align-center gap">
+      <h2 class="btn btn--positive txt-medium center margin-none">
+        Current version
+      </h2>
+    </header>
+
+    <%= @page.body.to_html %>
+  </section>
+</div>
