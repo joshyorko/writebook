@@ -13,7 +13,7 @@ class EditPageTest < ApplicationSystemTestCase
 
     click_button "Save"
 
-    assert_selector "main", text: "Welcome to the handbook! This is the first page."
-    assert_selector "main strong", text: "first"
+    assert_selector ".house-md-content", text: "Welcome to the handbook! This is the **first** page."
+    assert_selector ".house-md-content strong", text: "first"
   end
 end
