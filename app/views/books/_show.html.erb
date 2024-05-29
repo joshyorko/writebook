@@ -20,6 +20,8 @@
         <%= image_tag "arrow-left.svg", aria: { hidden: true }, size: 24 %>
         <span class="for-screen-reader">Go back</span>
       <% end %>
+    <% else %>
+      <span class="spacer flex-item-justify-start"></span>
     <% end %>
 
     <div class="breadcrumbs">
@@ -35,8 +37,13 @@
 
     <%= link_to_first_leafable(@leaves) %>
 
+    <button class="btn flex-item-justify-end" data-action="fullscreen#toggle">
+      <%= image_tag "expand.svg", aria: { hidden: true }, size: 24 %>
+      <span class="for-screen-reader">Enter fullscreen</span>
+    </button>
+
     <% if book.editable? %>
-      <%= link_to edit_book_path(book), class: "btn flex-item-justify-end" do %>
+      <%= link_to edit_book_path(book), class: "btn" do %>
         <%= image_tag "settings.svg", aria: { hidden: true }, size: 24 %>
         <span class="for-screen-reader">Edit book settings</span>
       <% end %>
