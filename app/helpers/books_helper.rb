@@ -67,19 +67,6 @@ module BooksHelper
     end
   end
 
-  def disable_access_edit?(book, user)
-    case
-    when user.current?
-      true
-    when book.new_record?
-      false
-    when Current.user.can_administer?
-      false
-    else
-      true
-    end
-  end
-
   private
     def hotkey_data_attributes(key)
       { controller: "hotkey", action: "keydown.#{key}@document->hotkey#click" }
