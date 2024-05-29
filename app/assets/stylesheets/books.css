@@ -46,7 +46,7 @@
   padding-inline: clamp(var(--inline-space), 5cqi, calc(var(--inline-space) * 3));
 }
 
-.bookmark__link{
+.bookmark__link {
   border-radius: 0.3em;
   color: var(--color-link);
   content: "";
