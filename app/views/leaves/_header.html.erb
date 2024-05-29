@@ -14,8 +14,10 @@
     <span class="for-screen-reader">Enter fullscreen</span>
   </button>
 
-  <%= link_to edit_leafable_path(leaf), class: "btn" do %>
-    <%= image_tag "pencil.svg", aria: { hidden: true }, size: 24 %>
-    <span class="for-screen-reader">Edit</span>
+  <% if book.editable? %>
+    <%= link_to edit_leafable_path(leaf), class: "btn" do %>
+      <%= image_tag "pencil.svg", aria: { hidden: true }, size: 24 %>
+      <span class="for-screen-reader">Edit</span>
+    <% end %>
   <% end %>
 <% end %>

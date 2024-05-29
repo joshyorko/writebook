@@ -14,3 +14,9 @@
   display: grid;
   place-items: center;
 }
+
+.page__toolbar {
+  inset: var(--footer-height) auto auto;
+  position: sticky;
+  z-index: 1;
+}

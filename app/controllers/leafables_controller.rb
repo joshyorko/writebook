@@ -28,7 +28,7 @@ class LeafablesController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream { render }
-      format.html { redirect_to leafable_url(@leaf) }
+      format.html { redirect_to @leaf.book.editable? ? edit_leafable_url(@leaf) : leafable_url(@leaf) }
     end
   end
 
