@@ -2,7 +2,7 @@
 
 <% content_for :header do %>
   <nav>
-    <%= link_to_previous_leafable(@leaf) %>
+    <%= link_to_previous_leafable(@leaf, hotkey: false) %>
 
     <div class="breadcrumbs">
       <%= link_to books_path do %>
@@ -30,7 +30,7 @@
     <%= render "leaves/delete", leaf: @leaf %>
 
     <span class="flex-item-justify-end flex-item-grow">
-      <%= link_to_next_leafable(@leaf) %>
+      <%= link_to_next_leafable(@leaf, hotkey: false) %>
     <span>
   </span>
 <% end %>
