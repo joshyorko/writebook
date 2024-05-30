@@ -14,7 +14,8 @@ module ActionText
       tables: true
     }
 
-    mattr_accessor :renderer, default: Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(DEFAULT_RENDERER_OPTIONS), DEFAULT_MARKDOWN_EXTENSIONS)
+    mattr_accessor :renderer, default: Redcarpet::Markdown.new(
+      Redcarpet::Render::HTML.new(DEFAULT_RENDERER_OPTIONS), DEFAULT_MARKDOWN_EXTENSIONS)
 
     belongs_to :record, polymorphic: true, touch: true
 
