@@ -1,5 +1,5 @@
-image: registry.kevinmcconnell.dev/writebook
-host: once-writebook-public-101
-tls_domain: writebook.37signals.com
+image: registry.kevinmcconnell.dev/workbook
+host: once-workbook-public-101
+tls_domain: workbook.37signals.com
 ssh_user: app
 arch: linux/amd64
