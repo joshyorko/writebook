@@ -19,7 +19,7 @@
 <div class="panel borderless margin-block-double shadow center">
   <%= form_with model: @user, class: "flex flex-column gap" do |form| %>
     <%= form.hidden_field :role %>
-    <div class="flex align-center gap">
+    <div class="flex align-center gap margin-block-start">
       <%= translation_button(:user_name) %>
       <label class="flex align-center gap input input--actor">
         <%= form.text_field :name, class: "input full-width", autocomplete: "name", placeholder: "Name", autofocus: true, required: true, data: { "1p-ignore": true } %>
@@ -47,9 +47,13 @@
   <% end %>
 </div>
 
-<% content_for :footer do %>
-  <%= button_to session_path, method: :delete, class: "btn flex-item-justify-start" do %>
+<div class="panel borderless margin-block-double shadow center">
+  <%= render "users/transfer", user: @user %>
+</div>
+
+<div class="panel borderless margin-block-double shadow center">
+  <%= button_to session_path, method: :delete, class: "btn center" do %>
     <%= image_tag "logout.svg", aria: { hidden: true }, size: 24 %>
     <span class="for-screen-reader">Sign out</span>
   <% end %>
-<% end %>
+</div>

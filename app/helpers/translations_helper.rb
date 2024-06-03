@@ -6,6 +6,7 @@ module TranslationsHelper
     email_address:  { "🇺🇸": "Enter your email address", "🇪🇸": "Introduce tu correo electrónico", "🇫🇷": "Entrez votre adresse courriel", "🇮🇳": "अपना ईमेल पता दर्ज करें", "🇩🇪": "Geben Sie Ihre E-Mail-Adresse ein", "🇧🇷": "Insira seu endereço de email" },
     password: { "🇺🇸": "Enter your password", "🇪🇸": "Introduce tu contraseña", "🇫🇷": "Saisissez votre mot de passe", "🇮🇳": "अपना पासवर्ड दर्ज करें", "🇩🇪": "Geben Sie Ihr Passwort ein", "🇧🇷": "Insira sua senha" },
     picture_caption: { "🇺🇸": "Picture caption", "🇪🇸": "Subtítulo de la imagen", "🇫🇷": "Légende de l'image", "🇮🇳": "चित्र का कैप्शन", "🇩🇪": "Bildunterschrift", "🇧🇷": "Legenda da imagem" },
+    transfer_session: { "🇺🇸": "Link to automatically log in on another device", "🇪🇸": "Enlace para iniciar sesión automáticamente en otro dispositivo", "🇫🇷": "Lien pour se connecter automatiquement sur un autre appareil", "🇮🇳": "किसी अन्य डिवाइस पर स्वचालित रूप से लॉग इन करने के लिए लिंक", "🇩🇪": "Link, um sich automatisch auf einem anderen Gerät anzumelden", "🇧🇷": "Link para fazer login automaticamente em outro dispositivo" },
     user_name: { "🇺🇸": "Enter your name", "🇪🇸": "Introduce tu nombre", "🇫🇷": "Entrez votre nom", "🇮🇳": "अपना नाम दर्ज करें", "🇩🇪": "Geben Sie Ihren Namen ein", "🇧🇷": "Insira seu nome" },
     update_password: { "🇺🇸": "Change password", "🇪🇸": "Cambiar contraseña", "🇫🇷": "Changer le mot de passe", "🇮🇳": "पासवर्ड बदलें", "🇩🇪": "Passwort ändern", "🇧🇷": "Alterar senha" }
   }
