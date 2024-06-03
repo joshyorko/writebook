@@ -33,8 +33,8 @@ module Leaf::Editable
 
     def dup_leafable_with_attachments(leafable)
       leafable.dup.tap do |new|
-        attachment_reflections.each do |name, _|
-          new.send(name).attach(self.send(name).blob)
+        leafable.attachment_reflections.each do |name, _|
+          new.send(name).attach(leafable.send(name).blob)
         end
       end
     end
