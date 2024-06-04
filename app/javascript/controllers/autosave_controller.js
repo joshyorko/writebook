@@ -1,5 +1,5 @@
 import { Controller } from "@hotwired/stimulus"
-import { FetchRequest } from "@rails/request.js"
+import { submitForm } from "helpers/form_helpers"
 
 const AUTOSAVE_INTERVAL = 3000
 
@@ -24,7 +24,7 @@ export default class extends Controller {
     this.#resetTimer()
 
     this.element.classList.add(this.savingClass)
-    await this.#submitForm()
+    await submitForm(this.element)
     this.element.classList.remove(this.dirtyClass, this.savingClass)
   }
 
@@ -32,12 +32,5 @@ export default class extends Controller {
     clearTimeout(this.#timer)
     this.#timer = null
   }
-
-  async #submitForm() {
-    const request = new FetchRequest(this.element.method, this.element.action, {
-      body: new FormData(this.element)
-    })
-
-    await request.perform()
-  }
 }
+
