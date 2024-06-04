@@ -55,13 +55,18 @@
   z-index: 1;
 }
 
+.book__sidebar {
+  inset-block-start: var(--block-space);
+  position: sticky;
+  z-index: 1;
+}
+
 .book__title {
   font-weight: 750;
 }
 
 .book__toolbar {
-  inset-block-start: calc(var(--footer-height) - var(--block-space));
-  position: sticky;
+  inset-block-start: 0;
   z-index: 1;
 }
 

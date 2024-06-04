@@ -47,19 +47,11 @@
 
 :where(#header) {
   border-block-end: var(--border-size, 1px) solid var(--color-subtle);
-  inset: 0 0 auto 0;
-  position: sticky;
   view-transition-name: header;
 
   > nav {
     view-transition-name: nav;
   }
-
-  /* @supports (animation-timeline: scroll()) {
-    animation: slide-up linear both;
-    animation-timeline: scroll();
-    animation-range: 0 150px;
-  } */
 }
 
 :where(#footer) {
@@ -74,8 +66,6 @@
 }
 
 :where(#header, #footer) {
-  /* -webkit-backdrop-filter: blur(20px); */
-  /* backdrop-filter: blur(20px); */
   background-color: var(--color-bg);
   z-index: 1;
 

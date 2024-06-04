@@ -144,6 +144,7 @@
 
 /* Position */
 .position-relative { position: relative; }
+.position-sticky { position: sticky; }
 
 /* Fills */
 .fill { background-color: var(--color-bg); }
