@@ -12,7 +12,8 @@ module LeavesHelper
     data: {
       controller: "autosave",
       action: "autosave#submit input->autosave#change house-md:change->autosave#change",
-      autosave_dirty_class: "dirty"
+      autosave_dirty_class: "dirty",
+      autosave_saving_class: "saving"
     }, **, &
   end
 end

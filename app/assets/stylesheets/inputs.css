@@ -157,6 +157,12 @@
 
 #page-editor.dirty, #picture-editor.dirty, #section-editor.dirty {
   body:has(&) button[type="submit"] {
+    transform: scale(1.1);
+  }
+}
+
+#page-editor.saving, #picture-editor.saving, #section-editor.saving {
+  body:has(&) button[type="submit"] {
     animation: pulse 1s infinite;
   }
 }

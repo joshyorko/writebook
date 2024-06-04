@@ -1,14 +1,16 @@
 import { Controller } from "@hotwired/stimulus"
+import { FetchRequest } from "@rails/request.js"
 
 const AUTOSAVE_INTERVAL = 5000
 
 export default class extends Controller {
-  static classes = [ "dirty" ]
+  static classes = [ "dirty", "saving" ]
 
   #timer
 
-  submit() {
-    this.#resetTimer()
+  submit(event) {
+    event.preventDefault()
+    this.#save()
   }
 
   change() {
@@ -18,14 +20,24 @@ export default class extends Controller {
     }
   }
 
-  #save() {
+  async #save() {
     this.#resetTimer()
-    this.element.requestSubmit()
-    this.element.classList.remove(this.dirtyClass)
+
+    this.element.classList.add(this.savingClass)
+    await this.#submitForm()
+    this.element.classList.remove(this.dirtyClass, this.savingClass)
   }
 
   #resetTimer() {
     clearTimeout(this.#timer)
     this.#timer = null
+  }
+
+  async #submitForm() {
+    const request = new FetchRequest(this.element.method, this.element.action, {
+      body: new FormData(this.element)
+    })
+
+    await request.perform()
   }
 }
