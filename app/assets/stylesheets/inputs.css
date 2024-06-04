@@ -167,6 +167,15 @@
   }
 }
 
+.being-edited-by {
+  background-color: #234;
+  color: white;
+  border-radius: 4px;
+  padding: 1rem;
+  animation: pulse 2s 10;
+  text-align: center;
+}
+
 @keyframes pulse {
   0%, 100% {
     transform: scale(1);
@@ -176,3 +185,4 @@
     transform: scale(1.1);
   }
 }
+

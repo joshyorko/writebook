@@ -1,0 +1,7 @@
+<%= turbo_stream.update dom_id(leaf, :being_edited) do %>
+  <%= tag.div class: "being-edited-by", data: { controller: "autoremove", action: "animationend->autoremove#remove", hide_from_user_id: user.id } do %>
+    <%= user.name %> is also editing this right now
+  <% end %>
+<% end %>
+
+

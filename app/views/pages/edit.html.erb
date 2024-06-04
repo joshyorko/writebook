@@ -24,6 +24,7 @@
 <% end %>
 
 <article class="layout--reading">
+  <%= render "leaves/being_edited_indicator", leaf: @leaf %>
   <%= render "house_toolbar" %>
   <%= render "pages/form", book: @book, page: @page %>
 </article>
