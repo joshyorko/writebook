@@ -48,18 +48,12 @@ module BooksHelper
   def link_to_next_leafable(leaf, hotkey: true, for_edit: false)
     if next_leaf = leaf.next
       path = for_edit ? edit_leafable_path(next_leaf) : leafable_path(next_leaf)
-      link_to path, data: hotkey_data_attributes("right", enabled: hotkey), class: "txt-ink txt-medium txt-undecorated flex align-center gap full-width flex-item-grow min-width justify-end flex-item-justify-end" do
-        tag.span(next_leaf.title, class: "overflow-ellipsis") +
-        tag.span(class: "btn txt-medium") do
-          image_tag("arrow-right.svg", aria: { hidden: true }, size: 24) + tag.span("Next", class: "for-screen-reader")
-        end
+      link_to path, data: hotkey_data_attributes("right", enabled: hotkey), class: "btn txt-medium min-width" do
+        tag.span(next_leaf.title, class: "overflow-ellipsis") + image_tag("arrow-right.svg", aria: { hidden: true }, size: 24)
       end
     else
-      link_to Current.user ? book_path(leaf.book) : public_book_path(leaf.book.slug), data: hotkey_data_attributes("right", enabled: hotkey), class: "txt-ink txt-medium txt-undecorated flex align-center gap full-width flex-item-grow min-width justify-end flex-item-justify-end" do
-        tag.span("End", class: "overflow-ellipsis") +
-        tag.span(class: "btn txt-medium") do
-          image_tag("arrow-right.svg", aria: { hidden: true }, size: 24) + tag.span("End", class: "for-screen-reader")
-        end
+      link_to Current.user ? book_path(leaf.book) : public_book_path(leaf.book.slug), data: hotkey_data_attributes("right", enabled: hotkey), class: "btn txt-medium" do
+        image_tag("arrow-right.svg", aria: { hidden: true }, size: 24) + tag.span("End", class: "for-screen-reader")
       end
     end
   end

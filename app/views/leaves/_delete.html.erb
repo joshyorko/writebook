@@ -1,4 +1,4 @@
-<%= button_to leafable_path(leaf), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn--negative" do %>
+<%= button_to leafable_path(leaf), method: :delete, data: { turbo_confirm: "Are you sure?" }, class: "btn btn--plain txt-small min-width" do %>
   <%= image_tag "trash.svg", aria: { hidden: true }, size: 24 %>
-  <span class="for-screen-reader">Delete this page</span>
+  <span class="for-screen-reader">Delete <%= leaf.title %></span>
 <% end %>

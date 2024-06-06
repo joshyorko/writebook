@@ -1,9 +1,9 @@
-<%= tag.div class: "flex align-center gap", data: { controller: "edit-mode", edit_mode_edit_url_value: edit_url, edit_mode_read_url_value: read_url } do %>
-  <%= image_tag "eye.svg", aria: { hidden: true }, size: 32, class: "colorize--black" %>
+<%= tag.div class: "flex align-center gap flex-item-no-shrink", data: { controller: "edit-mode", edit_mode_edit_url_value: edit_url, edit_mode_read_url_value: read_url } do %>
+  <%= image_tag "eye.svg", aria: { hidden: true }, size: 28, class: "colorize--black" %>
   <label class="switch txt-medium">
     <%= check_box_tag :edit_mode_enabled, class: "switch__input", data: { edit_mode_target: "switch", action: "edit-mode#change" } %>
     <span class="switch__btn round"></span>
     <span class="for-screen-reader">Editing mode</span>
   </label>
-  <%= image_tag "write.svg", aria: { hidden: true }, size: 28, class: "colorize--black" %>
+  <%= image_tag "write.svg", aria: { hidden: true }, size: 24, class: "colorize--black" %>
 <% end %>

@@ -44,14 +44,14 @@ Rails.application.routes.draw do
 
   direct :leafable do |leaf, options|
     if try(:public_view?)
-      route_for "public_leaf", leaf.book.slug, leaf, options
+      route_for "public_leaf", leaf.book.slug, leaf.public_param, options
     else
-      route_for "book_#{leaf.leafable_name}", leaf.book, leaf.leafable, options
+      route_for "book_#{leaf.leafable_name}", leaf.book, leaf, options
     end
   end
 
   direct :edit_leafable do |leaf, options|
-    route_for "edit_book_#{leaf.leafable_name}", leaf.book, leaf.leafable, options
+    route_for "edit_book_#{leaf.leafable_name}", leaf.book, leaf, options
   end
 
   namespace :action_text, path: nil do

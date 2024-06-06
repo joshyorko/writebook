@@ -1,22 +1,26 @@
-<%= leaf_nav_tag(leaf) do %>
-  <%= link_to_previous_leafable(leaf) %>
+<% content_for :header do %>
+  <%= leaf_nav_tag(leaf) do %>
+    <%= link_to_previous_leafable(leaf) %>
 
-  <div class="breadcrumbs">
-    <%= link_to books_path do %>
-      <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
-    <% end %> ▸
-    <%= link_to book.title, book %> ▸
-    <strong><%= leaf.leafable.title %></strong>
-  </div>
+    <div class="breadcrumbs">
+      <%= link_to books_path do %>
+        <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
+      <% end %> ▸
+      <%= link_to book.title, book %> ▸
+      <strong><%= leaf.leafable.title %></strong>
+    </div>
 
-  <button class="btn flex-item-justify-end" data-action="fullscreen#toggle" hidden>
-    <%= image_tag "expand.svg", aria: { hidden: true }, size: 24 %>
-    <span class="for-screen-reader">Enter fullscreen</span>
-  </button>
+    <button class="btn flex-item-justify-end" data-action="fullscreen#toggle">
+      <%= image_tag "expand.svg", aria: { hidden: true }, size: 24 %>
+      <span class="for-screen-reader">Enter fullscreen</span>
+    </button>
+  <% end %>
+<% end %>
 
+<% content_for :toolbar do %>
   <% if book.editable? %>
-    <span class="flex-item-justify-end">
+    <div class="page-toolbar fill-shade">
       <%= editing_mode_toggle_switch(leaf: leaf) %>
-    <span>
+    </div>
   <% end %>
 <% end %>

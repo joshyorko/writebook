@@ -33,6 +33,10 @@
     </svg>
   </span>
 
+  <span hidden>
+    <%= render "leaves/delete", leaf: leaf %>
+  </span>
+
   <small class="toc__wordcount translucent txt-small--responsive">
     <% if leaf.leafable.is_a?(Page) %>
       <%= word_count(leaf.leafable.body.content) %>

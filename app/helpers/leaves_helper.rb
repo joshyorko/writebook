@@ -15,4 +15,14 @@ module LeavesHelper
       reading_tracker_leaf_id_value: leaf.id
     }, **, &
   end
+
+  def leafable_edit_form(leafable, **, &)
+    form_with model: leafable, url: leafable_path(leafable.leaf), method: :put, format: :html,
+    data: {
+      controller: "autosave",
+      action: "autosave#submit:prevent input->autosave#change house-md:change->autosave#change",
+      autosave_dirty_class: "dirty",
+      autosave_saving_class: "saving"
+    }, **, &
+  end
 end

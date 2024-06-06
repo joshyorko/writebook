@@ -38,7 +38,7 @@ class PagesControllerTest < ActionDispatch::IntegrationTest
     assert_response :ok
 
     put leafable_path(leaves(:welcome_page)), params: { leaf: { title: "Better welcome" }, page: { body: "With even more interesting words." } }
-    assert_redirected_to edit_leafable_path(leaves(:welcome_page).reload)
+    assert_response :no_content
 
     updated_page = Page.last
     assert_equal "Better welcome", updated_page.title

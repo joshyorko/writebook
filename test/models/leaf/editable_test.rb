@@ -10,6 +10,28 @@ class Leaf::EditableTest < ActiveSupport::TestCase
     assert_equal "This is _such_ a great handbook.", leaves(:welcome_page).edits.last.page.body.content
   end
 
+  test "edits that are close together don't create new revisions" do
+    assert_difference -> { leaves(:welcome_page).edits.count }, +1 do
+      leaves(:welcome_page).edit leafable_params: { body: "First change" }
+    end
+
+    freeze_time
+    travel 1.minute
+
+    assert_no_difference -> { leaves(:welcome_page).edits.count } do
+      leaves(:welcome_page).edit leafable_params: { body: "Second change" }
+    end
+
+    assert_equal "Second change", leaves(:welcome_page).page.body.content
+    assert_equal Time.now, leaves(:welcome_page).edits.last.updated_at
+
+    travel 1.hour
+
+    assert_difference -> { leaves(:welcome_page).edits.count }, +1 do
+      leaves(:welcome_page).edit leafable_params: { body: "Third change" }
+    end
+  end
+
   test "changing a leaf title doesn't create a revision" do
     assert_no_difference -> { Edit.count } do
       leaves(:welcome_page).edit leaf_params: { title: "New title" }

@@ -56,13 +56,15 @@
 <% end %>
 
 <aside class="txt-align-center margin-block">
-  <%= image_tag book.cover.attached? ? book.cover : "default-cover.webp", alt: "Book cover", class: "book__cover margin-block-none center" %>
+  <div class="book__sidebar">
+    <%= image_tag book.cover.attached? ? book.cover : "default-cover.webp", alt: "Book cover", class: "book__cover margin-block-none center" %>
 
-  <% if book.editable? %>
-    <%= turbo_frame_tag book, :publication do %>
-      <%= render "books/publications/publication", book: book %>
+    <% if book.editable? %>
+      <%= turbo_frame_tag book, :publication do %>
+        <%= render "books/publications/publication", book: book %>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </aside>
 
 <%= arrangement_tag book, class: "arrangement__container toc__container full-width txt-align-center" do %>
@@ -72,7 +74,7 @@
     <small class="txt-medium--responsive txt-normal translucent"><%= book.author %></small>
   </h1>
 
-  <div class="book__toolbar fill-white flex gap-half pad-block margin-block-end-half" data-controller="toc-view" data-toc-view-id-value="<%= dom_id(book) %>">
+  <div class="book__toolbar fill-white flex gap-half pad-block margin-block-end-half <%= "position-sticky" if book.editable? %>" data-controller="toc-view" data-toc-view-id-value="<%= dom_id(book) %>">
     <% if book.editable? %>
       <%= book_part_create_button book, Page do %>
         <svg viewBox="0 0 20 24" xmlns="http://www.w3.org/2000/svg" fill="var(--color-ink)" height="60vmin" width="60vmin">

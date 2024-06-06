@@ -15,7 +15,7 @@ class PicturesControllerTest < ActionDispatch::IntegrationTest
         image: fixture_file_upload("white-rabbit.webp", "image/webp")
       } }
 
-    assert_redirected_to edit_leafable_path(leaves(:reading_picture).reload)
+    assert_response :no_content
 
     updated_picture = Picture.last
     assert_equal "New picture", updated_picture.title
@@ -31,7 +31,7 @@ class PicturesControllerTest < ActionDispatch::IntegrationTest
         caption: "New caption"
       } }
 
-    assert_redirected_to edit_leafable_path(leaves(:reading_picture).reload)
+    assert_response :no_content
 
     updated_picture = Picture.last
 

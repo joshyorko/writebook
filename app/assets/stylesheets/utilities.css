@@ -122,6 +122,7 @@
 .margin-block-end-half { margin-block-end: var(--block-space-half); }
 .margin-block-double { margin-block: var(--block-space-double); }
 .margin-block-end-double { margin-block-end: var(--block-space-double); }
+.margin-block-start-double { margin-block-start: var(--block-space-double); }
 
 .margin-inline { margin-inline: var(--inline-space); }
 .margin-inline-start { margin-inline-start: var(--inline-space); }
@@ -144,6 +145,7 @@
 
 /* Position */
 .position-relative { position: relative; }
+.position-sticky { position: sticky; }
 
 /* Fills */
 .fill { background-color: var(--color-bg); }
@@ -182,6 +184,13 @@
       0 .8em 1.2em -1.6em oklch(var(--lch-always-black) / 0.9),
       0 1.2em 1.6em -2em oklch(var(--lch-always-black) / 1);
   }
+}
+
+/* Seperators */
+.separator {
+  border-inline-start: 1px solid var(--color-subtle-dark);
+  display: inline-flex;
+  inline-size: 0;
 }
 
 /* Accessibility */

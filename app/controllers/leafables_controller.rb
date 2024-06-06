@@ -1,6 +1,8 @@
 class LeafablesController < ApplicationController
   include SetBookLeaf
 
+  before_action :broadcast_being_edited_indicator, only: :update
+
   def new
     @leafable = new_leafable
   end
@@ -21,7 +23,7 @@ class LeafablesController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream { render }
-      format.html { redirect_to @leaf.book.editable? ? edit_leafable_url(@leaf) : leafable_url(@leaf) }
+      format.html { head :no_content }
     end
   end
 
@@ -50,5 +52,10 @@ class LeafablesController < ApplicationController
       if position = params[:position]&.to_i
         leaf.move_to_position position
       end
+    end
+
+    def broadcast_being_edited_indicator
+      Turbo::StreamsChannel.broadcast_render_later_to @leaf, :being_edited,
+        partial: "leaves/being_edited_by", locals: { leaf: @leaf, user: Current.user }
     end
 end

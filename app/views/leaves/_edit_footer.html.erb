@@ -1,9 +1,7 @@
-<% content_for :footer do %>
-  <span class="flex justify-start">
-    <%= render "leaves/delete", leaf: leaf %>
+<%= render "leaves/history", leaf: @leaf %>
 
-    <span class="flex-item-justify-end flex-item-grow">
-      <%= link_to_next_leafable(leaf, hotkey: false, for_edit: true) %>
-    <span>
-  </span>
+<% content_for :footer do %>
+  <nav class="book__nav flex align-center gap justify-center">
+    <%= link_to_next_leafable(leaf, hotkey: false, for_edit: true) %>
+  </nav>
 <% end %>

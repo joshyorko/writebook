@@ -16,10 +16,10 @@
 
 <%= render "books/form", book: @book, users: @users, creating_user: nil %>
 
-<% content_for :footer do %>
-  <%= button_to book_path(@book), method: :delete, class: "btn btn--negative flex-item-justify-start",
+<div class="panel borderless margin-block-double center txt-medium txt-align-center">
+  <%= button_to book_path(@book), method: :delete, class: "btn btn--negative",
         data: { turbo_confirm: "Are you sure you want to delete this book? It cannot be undone." } do %>
     <%= image_tag "trash.svg", aria: { hidden: true }, size: 24 %>
-    <span class="for-screen-reader">Delete <%= @book.title %></span>
+    <span>Delete <%= @book.title %></span>
   <% end %>
-<% end %>
+</div>

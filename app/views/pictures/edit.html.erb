@@ -14,13 +14,24 @@
       <% end %>
     </div>
 
-    <button type="submit" form="picture-editor", class="btn btn--positive flex-item-justify-end">
+    <button class="btn flex-item-justify-end" data-action="fullscreen#toggle">
+      <%= image_tag "expand.svg", aria: { hidden: true }, size: 24 %>
+      <span class="for-screen-reader">Enter fullscreen</span>
+    </button>
+  </nav>
+<% end %>
+
+<% content_for :toolbar do %>
+  <div class="page-toolbar fill-selected gap margin-block-end-double">
+    <%= editing_mode_toggle_switch(leaf: @leaf) %>
+
+    <span class="separator margin-inline-half" aria-hidden="true"></span>
+
+    <button type="submit" form="picture-editor" class="btn flex page-toolbar__save flex-item-justify-end flex-item-no-shrink txt-small">
       <%= image_tag "check.svg", aria: { hidden: true }, size: 24 %>
       <span class="for-screen-reader">Save</span>
     </button>
-
-    <%= editing_mode_toggle_switch(leaf: @leaf) %>
-  </nav>
+  </div>
 <% end %>
 
 <div class="page--picture">

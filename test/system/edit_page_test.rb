@@ -6,7 +6,7 @@ class EditPageTest < ApplicationSystemTestCase
   end
 
   test "edit page" do
-    visit edit_book_page_url(books(:handbook), pages(:welcome))
+    visit edit_book_page_url(books(:handbook), leaves(:welcome_page))
     assert_selector "house-md"
 
     fill_house_editor "page[body]", with: "Welcome to the handbook! This is the **first** page."

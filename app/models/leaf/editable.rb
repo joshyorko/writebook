@@ -1,6 +1,8 @@
 module Leaf::Editable
   extend ActiveSupport::Concern
 
+  MINIMUM_TIME_BETWEEN_VERSIONS = 10.minutes
+
   included do
     has_many :edits, dependent: :delete_all
 
@@ -8,24 +10,42 @@ module Leaf::Editable
   end
 
   def edit(leafable_params: {}, leaf_params: {})
-    if will_change_leafable?(leafable_params)
-      update_leafable leaf_params, leafable_params
+    if record_new_edit?(leafable_params)
+      update_and_record_edit leaf_params, leafable_params
     else
-      update! leaf_params
+      update_without_recording_edit leaf_params, leafable_params
     end
   end
 
   private
+    def record_new_edit?(leafable_params)
+      will_change_leafable?(leafable_params) && last_edit_old?
+    end
+
+    def last_edit_old?
+      edits.empty? || edits.last.created_at.before?(MINIMUM_TIME_BETWEEN_VERSIONS.ago)
+    end
+
     def will_change_leafable?(leafable_params)
       leafable_params.select do |key, value|
         leafable.attributes[key.to_s] != value
       end.present?
     end
 
-    def update_leafable(leaf_params, leafable_params)
+    def update_without_recording_edit(leaf_params, leafable_params)
+      transaction do
+        leafable.update!(leafable_params)
+
+        edits.last&.touch
+        update! leaf_params
+      end
+    end
+
+    def update_and_record_edit(leaf_params, leafable_params)
       transaction do
         new_leafable = dup_leafable_with_attachments leafable
         new_leafable.update!(leafable_params)
+
         edits.revision.create!(leafable: leafable)
         update! leaf_params.merge(leafable: new_leafable)
       end
