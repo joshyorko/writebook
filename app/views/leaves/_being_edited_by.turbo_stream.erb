@@ -1,7 +1,7 @@
 <%= turbo_stream.append dom_id(leaf, :being_edited) do %>
-  <%= tag.div id: dom_id(user, :being_edited_by), class: "being-edited-by", data: { controller: "autoremove", action: "animationend->autoremove#remove", hide_from_user_id: user.id } do %>
-    <%= user.name %> is also editing this right now
+  <%= tag.div id: dom_id(user, :being_edited_by), class: "flex align-center justify-center margin-block-end-double txt-medium gap-half being-edited-by", data: { controller: "autoremove", action: "animationend->autoremove#remove", hide_from_user_id: user.id } do %>
+    <%= image_tag "write.svg", aria: { hidden: true }, size: 18, class: "colorize--black" %>
+    <span><%= user.name %></span>
+    <span class="spinner txt-small margin-inline-half flex-inline"></span>
   <% end %>
 <% end %>
-
-
