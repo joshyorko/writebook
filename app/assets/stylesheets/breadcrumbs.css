@@ -9,4 +9,9 @@
     text-overflow: ellipsis;
     white-space: nowrap;
   }
+
+  input {
+    field-sizing: content;
+    min-inline-size: 8ch;
+  }
 }
