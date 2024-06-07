@@ -112,6 +112,10 @@
   .toc__container:where(:has(#toc-list:checked)) & {
     display: none;
   }
+
+  .heading__link {
+    display: none;
+  }
 }
 
 .toc__title {
