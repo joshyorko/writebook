@@ -57,9 +57,9 @@
 
   <section class="txt-align-start">
     <header class="flex align-center gap justify-center">
-      <h2 class="btn btn--positive txt-medium center margin-none">
-        Current version
-      </h2>
+      <%= link_to edit_leafable_path(@page.leaf), class: "btn btn--positive txt-medium center margin-none" do %>
+        Current
+      <% end %>
     </header>
 
     <%= @page.body.to_html %>
