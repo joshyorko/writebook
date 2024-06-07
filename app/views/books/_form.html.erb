@@ -3,7 +3,7 @@
     <%= tag.div class: "flex flex-column", data: { controller: "upload-preview", upload_preview_default_image_value: asset_url("default-cover.webp") } do %>
       <label class="align-center center gap">
         <div class="input--file">
-          <%= image_tag book.cover.attached? ? book.cover : "default-cover.webp", alt: "Book cover", size: 300,
+          <%= image_tag book.cover.attached? ? book.cover : "default-cover.webp", alt: "Book cover",
               class: "book__cover margin-none", style: "--cover-height: 50dvh",
               data: { upload_preview_target: "image" } %>
           <%= form.file_field :cover, class: "input", accept: "image/*",
