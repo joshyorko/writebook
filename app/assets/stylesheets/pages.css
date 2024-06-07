@@ -55,25 +55,41 @@ body:has(.page--section) {
   place-self: center;
 }
 
-#page-editor.dirty, #picture-editor.dirty, #section-editor.dirty {
-  body:has(&) .page-toolbar__save {
-    --btn-background: var(--color-link);
-    --btn-border-color: var(--color-bg);
-    --btn-color: var(--color-ink-reversed);
-    --outline-color: var(--color-link);
+  body:has(#page-editor.clean, #picture-editor.clean, #section-editor.clean) {
+    & .page-toolbar__save {
+      --btn-background: var(--color-positive);
+      --btn-border-color: var(--color-bg);
+      --btn-color: var(--color-ink-reversed);
+      --outline-color: var(--color-positive);
 
-    img {
-      filter: invert(1);
+      img {
+        filter: invert(1);
 
-      @media (prefers-color-scheme: dark) {
-        filter: invert(0);
+        @media (prefers-color-scheme: dark) {
+          filter: invert(0);
+        }
       }
     }
   }
-}
 
-#page-editor.saving, #picture-editor.saving, #section-editor.saving {
-  body:has(&) .page-toolbar__save {
+  body:has(#page-editor.dirty, #picture-editor.dirty, #section-editor.dirty) {
+    & .page-toolbar__save {
+      --btn-background: var(--color-link);
+      --btn-border-color: var(--color-bg);
+      --btn-color: var(--color-ink-reversed);
+      --outline-color: var(--color-link);
+
+      img {
+        filter: invert(1);
+
+        @media (prefers-color-scheme: dark) {
+          filter: invert(0);
+        }
+      }
+    }
+  }
+
+  body:has(#page-editor.saving, #picture-editor.saving, #section-editor.saving) .page-toolbar__save {
     position: relative;
 
     > * {
@@ -97,7 +113,6 @@ body:has(.page--section) {
       position: absolute;
     }
   }
-}
 
 .being-edited-by {
   background-color: oklch(var(--lch-red) / 0.1);

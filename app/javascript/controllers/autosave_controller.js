@@ -4,7 +4,7 @@ import { submitForm } from "helpers/form_helpers"
 const AUTOSAVE_INTERVAL = 3000
 
 export default class extends Controller {
-  static classes = [ "dirty", "saving" ]
+  static classes = [ "clean", "dirty", "saving" ]
 
   #timer
 
@@ -16,6 +16,7 @@ export default class extends Controller {
     if (!this.#timer) {
       this.#timer = setTimeout(() => this.#save(), AUTOSAVE_INTERVAL)
       this.element.classList.add(this.dirtyClass)
+      this.element.classList.remove(this.cleanClass)
     }
   }
 
@@ -25,6 +26,7 @@ export default class extends Controller {
     this.element.classList.add(this.savingClass)
     await submitForm(this.element)
     this.element.classList.remove(this.dirtyClass, this.savingClass)
+    this.element.classList.add(this.cleanClass)
   }
 
   #resetTimer() {
@@ -32,4 +34,3 @@ export default class extends Controller {
     this.#timer = null
   }
 }
-
