@@ -132,7 +132,6 @@ table {
   border-collapse: collapse;
   inline-size: 100%;
   margin: 1lh auto;
-  table-layout: fixed;
 }
 
 thead td {
