@@ -8,14 +8,21 @@
       <%= image_tag "books.svg", aria: { label: "Books" }, size: 19, class: "colorize--black", alt: "Books" %>
     </div>
 
-    <%= link_to users_path, class: "btn flex-item-justify-end" do %>
-      <%= image_tag "people.svg", aria: { hidden: true }, size: 24 %>
-      <span class="for-screen-reader">Manage people</span>
+    <% if Current.user %>
+      <%= link_to users_path, class: "btn flex-item-justify-end" do %>
+        <%= image_tag "people.svg", aria: { hidden: true }, size: 24 %>
+        <span class="for-screen-reader">Manage people</span>
+      <% end %>
+    <% else %>
+      <%= link_to new_session_path, class: "btn flex-item-justify-end" do %>
+        <%= image_tag "login-keys.svg", aria: { hidden: true }, size: 24 %>
+        <span class="for-screen-reader">Sign in</span>
+      <% end %>
     <% end %>
   </nav>
 <% end %>
 
 <div class="library">
   <%= render @books %>
-  <%= render "books/new" %>
+  <%= render "books/new" if Current.user %>
 </div>
