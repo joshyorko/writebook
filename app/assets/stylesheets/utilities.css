@@ -7,10 +7,10 @@
   --block-space-half: calc(var(--block-space) / 2);
   --block-space-double: calc(var(--block-space) * 2);
 
-  --font-small-responsive: clamp(0.8rem, 6cqi, 1.2rem);
-  --font-medium-responsive: clamp(1rem, 2.5cqi, 1.5rem);
-  --font-large-responsive: clamp(1.3rem, 4cqi, 2rem);
-  --font-x-large-responsive: clamp(1.8rem, 6cqi, 3.6rem);
+  --font-small-responsive: clamp(0.8rem, 2cqi, 1rem);
+  --font-medium-responsive: clamp(1rem, 2.5cqi, 1.4rem);
+  --font-large-responsive: clamp(1.3rem, 4cqi, 1.8rem);
+  --font-x-large-responsive: clamp(1.8rem, 5cqi, 3.2rem);
 }
 
 /* Text */
