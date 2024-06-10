@@ -67,6 +67,7 @@
 
 .book__toolbar {
   inset-block-start: 0;
+  max-inline-size: 70ch;
   z-index: 1;
 }
 

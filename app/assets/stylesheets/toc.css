@@ -31,7 +31,7 @@
   border: solid 2px transparent;
   color: var(--color-ink);
   container-type: inline-size;
-  display: flex;
+  display: inline-flex;
   flex-direction: column;
   margin: 0;
   text-align: center;
@@ -41,6 +41,7 @@
     column-gap: 1ch;
     flex-direction: row;
     justify-content: center;
+    max-inline-size: 70ch;
     row-gap: calc(var(--block-space) * 0.3);
     text-align: start;
   }
