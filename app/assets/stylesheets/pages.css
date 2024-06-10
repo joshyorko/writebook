@@ -104,6 +104,18 @@
     }
   }
 
+body:not(:has(#edit_mode_enabled)) .hide_from_reading_mode {
+  display: none;
+}
+
+body:has(#edit_mode_enabled:not(:checked)) .hide_from_reading_mode {
+  display: none;
+}
+
+body:has(#edit_mode_enabled:checked) .hide_from_edit_mode {
+  display: none;
+}
+
 .being-edited-by {
   background-color: oklch(var(--lch-red) / 0.1);
   border-radius: 0.5em;

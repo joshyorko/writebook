@@ -166,21 +166,6 @@
   }
 }
 
-.toc__link,
-.toc__title {
-  body:not(:has(#edit_mode_enabled)) &.hide_from_reading_mode {
-    display: none;
-  }
-
-  :has(#edit_mode_enabled:not(:checked)) &.hide_from_reading_mode {
-    display: none;
-  }
-
-  :has(#edit_mode_enabled:checked) &.hide_from_edit_mode {
-    display: none;
-  }
-}
-
 .toc__wordcount {
   white-space: nowrap;
 
