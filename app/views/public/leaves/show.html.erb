@@ -18,4 +18,6 @@
   </div>
 <% end %>
 
-<%= render "leaves/navigation", leaf: @leaf %>
+<% content_for :footer do %>
+  <%= render "leaves/navigation", leaf: @leaf %>
+<% end %>
