@@ -10,14 +10,14 @@ module Authentication
   end
 
   class_methods do
+    def require_unauthenticated_access(**options)
+      allow_unauthenticated_access
+      before_action :redirect_signed_in_user_to_root, **options
+    end
+
     def allow_unauthenticated_access(**options)
       skip_before_action :require_authentication, **options
       before_action :restore_authentication, **options
-    end
-
-    def require_unauthenticated_access(**options)
-      skip_before_action :require_authentication, **options
-      before_action :restore_authentication, :redirect_signed_in_user_to_root, **options
     end
   end
 
