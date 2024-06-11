@@ -48,7 +48,7 @@
   </nav>
 <% end %>
 
-<% cache [ book, book.editable? ] do %>
+<% cache [ book, book.editable?, public_view? ] do %>
   <aside class="txt-align-center margin-block">
     <div class="book__sidebar">
       <% if book.cover.attached? %>
