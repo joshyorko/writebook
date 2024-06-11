@@ -13,4 +13,3 @@ module BookScoped extend ActiveSupport::Concern
       head :forbidden unless @book.editable?
     end
 end
-
