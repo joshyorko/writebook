@@ -1,7 +1,7 @@
 class Leaf < ApplicationRecord
   include Editable, Positionable, Status
 
-  belongs_to :book
+  belongs_to :book, touch: true
   positioned_within :book, association: :leaves
 
   delegated_type :leafable, types: Leafable::TYPES, dependent: :destroy
