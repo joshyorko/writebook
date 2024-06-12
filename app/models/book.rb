@@ -8,9 +8,6 @@ class Book < ApplicationRecord
   scope :published, -> { where(published: true) }
 
   def press(leafable, leaf_params)
-    transaction do
-      leafable.save!
-      leaves.create! leaf_params.merge(leafable: leafable)
-    end
+    leaves.create! leaf_params.merge(leafable: leafable)
   end
 end
