@@ -29,6 +29,11 @@ class LeafablesController < ApplicationController
 
   def destroy
     @leaf.trashed!
+
+    respond_to do |format|
+      format.turbo_stream { render }
+      format.html { redirect_to @book }
+    end
   end
 
   private
