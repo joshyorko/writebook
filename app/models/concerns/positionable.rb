@@ -33,11 +33,11 @@ module Positionable
   end
 
   def previous
-    other_positioned_siblings.before(self).last
+    other_positioned_siblings.active.before(self).last
   end
 
   def next
-    other_positioned_siblings.after(self).first
+    other_positioned_siblings.active.after(self).first
   end
 
   # TODO: the `followed_by` part of this API is a little strange. It's there so

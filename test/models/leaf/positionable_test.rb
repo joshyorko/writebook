@@ -75,4 +75,10 @@ class Leaf::PositionableTest < ActiveSupport::TestCase
     assert_nil leaves(:welcome_section).previous
     assert_nil leaves(:reading_picture).next
   end
+
+  test "only active items are included as neighbours" do
+    assert_equal leaves(:summary_page), leaves(:welcome_page).next
+    leaves(:summary_page).trashed!
+    assert_equal leaves(:reading_picture), leaves(:welcome_page).next
+  end
 end
