@@ -15,7 +15,7 @@ ENV RAILS_ENV="production" \
 
 
 # Throw-away build stage to reduce size of final image
-FROM base as build
+FROM --platform=$TARGETPLATFORM base as build
 
 # Install packages needed to build gems
 RUN apt-get update -qq && \
@@ -57,9 +57,9 @@ ENV APP_VERSION=$APP_VERSION
 ARG GIT_REVISION
 ENV GIT_REVISION=$GIT_REVISION
 
-# Entrypoint prepares the database.
+# Entrypoint prepares the application.
 ENTRYPOINT ["/rails/bin/docker-entrypoint"]
 
 # Start the server by default, this can be overwritten at runtime
-EXPOSE 3000
+EXPOSE 80 443
 CMD ["bin/boot"]
