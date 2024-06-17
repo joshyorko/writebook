@@ -225,7 +225,7 @@
 }
 
 .blank-slate {
-  display: none;
+  display: flex;
   margin-inline-start: 2em;
   padding: 1.5em 0;
 
@@ -234,7 +234,7 @@
     margin-block-start: -1.5em;
   }
 
-  :has(#leaves:empty) & {
-    display: flex;
+  :has(.toc__leaf) & {
+    display: none;
   }
 }
