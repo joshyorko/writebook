@@ -1,8 +1,9 @@
 class DemoContent
   class << self
     def create_manual(user)
-      book = Book.create(title: "The Writebook Manual", accesses: [ Access.new(user: user, level: :editor) ])
+      book = Book.create(title: "The Writebook Manual", everyone_access: true)
       book.cover.attach(load_attachement("writebook-manual-cover.png"))
+      book.update_access(readers: [], editors: [])
 
       book.press demo_section, title: "Chapter 1"
       book.press demo_page, title: "My first page"
