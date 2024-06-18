@@ -2,7 +2,8 @@ class UsersController < ApplicationController
   require_unauthenticated_access only: %i[ new create ]
 
   before_action :verify_join_code, only: %i[ new create ]
-  before_action :ensure_can_administer, :set_user, only: %i[ update edit destroy ]
+  before_action :ensure_can_administer, only: %i[ update destroy ]
+  before_action :set_user, only: %i[ show update edit destroy ]
 
 
   def index
@@ -19,6 +20,9 @@ class UsersController < ApplicationController
     redirect_to root_url
   rescue ActiveRecord::RecordNotUnique
     redirect_to new_session_url(email_address: user_params[:email_address])
+  end
+
+  def show
   end
 
   def edit
