@@ -179,3 +179,9 @@ body:not(.edit-mode) .hide_from_reading_mode {
   border-radius: 0.5em;
   padding: 0.5em 1em;
 }
+
+.page-edit__current {
+  @media (max-width: 100ch) {
+    display: none;
+  }
+}
