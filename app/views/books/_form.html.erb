@@ -7,7 +7,8 @@
               class: "book__cover margin-none", style: "--cover-height: 50dvh",
               data: { upload_preview_target: "image" } %>
           <%= form.file_field :cover, class: "input", accept: "image/png, image/jpeg, image/jpg, image/webp",
-              data: { upload_preview_target: "input", action: "upload-preview#previewImage" } %>
+              data: { upload_preview_target: "input", action: "upload-preview#previewImage" },
+              title: book.cover.attached? ? "Replace book cover" : "Upload book cover" %>
         </div>
       </label>
 

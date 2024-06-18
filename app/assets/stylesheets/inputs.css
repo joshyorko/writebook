@@ -7,6 +7,7 @@
   color: var(--input-color, var(--color-ink));
   font-size: max(16px, 1em);
   inline-size: 100%;
+  line-height: 1.2;
   max-inline-size: 100%;
   padding: var(--input-padding, 0.5em 0.8em);
   resize: none;
@@ -23,6 +24,7 @@
     --input-border-color: var(--color-selected-dark);
     --hover-color: var(--color-selected-dark);
     --outline-size: 0;
+    --outline-color: transparent;
 
     filter: var(--hover-filter);
     box-shadow: 0 0 0 var(--hover-size) var(--hover-color);
@@ -45,11 +47,11 @@
   }
 
   input[type="file"] {
-    --input-border-color: var(--color-selected-dark);
+    --input-border-color: var(--color-subtle-dark);
     --input-border-radius: 8px;
-    --input-border-size: 4px;
 
     block-size: 100%;
+    cursor: pointer;
     font-size: 0;
     inline-size: 100%;
     overflow: clip;
@@ -58,6 +60,13 @@
       appearance: none;
       cursor: pointer;
       opacity: 0;
+    }
+
+    &:focus,
+    &:focus-visible {
+      --input-border-color: var(--color-selected-dark);
+      --input-border-radius: 8px;
+      --input-border-size: 0.15rem;
     }
   }
 }

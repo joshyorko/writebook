@@ -3,7 +3,7 @@ html, body {
   --font-serif: ui-serif, serif;
   --font-mono: ui-monospace, monospace;
   --hover-color: var(--color-subtle-dark);
-  --hover-size: 0.15em;
+  --hover-size: 0.15rem;
   --hover-filter: brightness(1);
 
   -moz-osx-font-smoothing: grayscale;
@@ -54,6 +54,10 @@ a:not([class]) {
     outline-width: var(--outline-size);
     outline-color: var(--outline-color, currentColor);
     outline-offset: var(--outline-offset, calc(var(--outline-size) * 2));
+  }
+
+  &:where(:focus-visible):active {
+    outline: 0;
   }
 
   /* Pressing */
