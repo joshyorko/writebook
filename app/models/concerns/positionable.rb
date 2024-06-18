@@ -15,13 +15,13 @@ module Positionable
   end
 
   class_methods do
-    def positioned_within(parent, association:)
+    def positioned_within(parent, association:, filter:)
       define_method :positioning_parent do
         send(parent)
       end
 
       define_method :all_positioned_siblings do
-        positioning_parent.send(association).positioned
+        positioning_parent.send(association).send(filter).positioned
       end
 
       define_method :other_positioned_siblings do
@@ -33,11 +33,11 @@ module Positionable
   end
 
   def previous
-    other_positioned_siblings.active.before(self).last
+    other_positioned_siblings.before(self).last
   end
 
   def next
-    other_positioned_siblings.active.after(self).first
+    other_positioned_siblings.after(self).first
   end
 
   # TODO: the `followed_by` part of this API is a little strange. It's there so

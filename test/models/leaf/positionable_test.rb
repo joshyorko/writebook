@@ -78,7 +78,19 @@ class Leaf::PositionableTest < ActiveSupport::TestCase
 
   test "only active items are included as neighbours" do
     assert_equal leaves(:summary_page), leaves(:welcome_page).next
+
     leaves(:summary_page).trashed!
+
     assert_equal leaves(:reading_picture), leaves(:welcome_page).next
+  end
+
+  test "only active items are counted when determining position" do
+    leaves(:welcome_page).trashed!
+
+    leaves(:welcome_section).move_to_position(1)
+    assert_equal [ leaves(:summary_page), leaves(:welcome_section), leaves(:reading_picture) ], @leaves.reload.active
+
+    leaves(:welcome_section).move_to_position(0)
+    assert_equal [ leaves(:welcome_section), leaves(:summary_page), leaves(:reading_picture) ], @leaves.reload.active
   end
 end
