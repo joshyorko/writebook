@@ -28,13 +28,12 @@
 }
 
 .toc__blank-slate {
-  display: flex;
-  margin-inline-start: 2em;
-  padding: 1.5em 0;
+  display: inline-flex;
+  flex-direction: column;
+  margin-inline: auto;
 
   img {
-    inline-size: 3em;
-    margin-block-start: -1.5em;
+    inline-size: 6.5em;
   }
 
   :has(.toc__leaf) & {
