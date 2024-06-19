@@ -67,6 +67,7 @@
 
 .btn:is(.arrangement__handle) {
   display: none;
+  flex-shrink: 0;
 }
 
 .arrangement-selected {
