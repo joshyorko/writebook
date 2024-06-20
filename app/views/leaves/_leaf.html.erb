@@ -36,11 +36,11 @@
         <span class="overflow-ellipsis"><%= leaf.title %></span>
       <% end %>
 
-      <%= link_to leafable_path(leaf), class: "toc__title min-width hide_from_edit_mode", data: { turbo_frame: "_top" } do %>
+      <%= link_to book_leafable_path(leaf.book, leaf), class: "toc__title min-width hide_from_edit_mode", data: { turbo_frame: "_top" } do %>
         <span class="overflow-ellipsis"><%= leaf.title %></span>
       <% end %>
     <% else %>
-      <%= link_to leafable_path(leaf), class: "toc__title min-width", data: { turbo_frame: "_top" } do %>
+      <%= link_to book_leafable_path(leaf.book, leaf), class: "toc__title min-width", data: { turbo_frame: "_top" } do %>
         <span class="overflow-ellipsis"><%= leaf.title %></span>
       <% end %>
     <% end %>
