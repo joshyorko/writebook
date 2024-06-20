@@ -44,7 +44,7 @@ class BooksController < ApplicationController
 
   private
     def set_book
-      @book = Book.accessable_or_published.find params[:id]
+      @book = Book.accessable_or_published.find slugged_param(:id)
     end
 
     def set_users

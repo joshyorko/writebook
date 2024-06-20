@@ -8,11 +8,11 @@ module SetBookLeaf
 
   private
     def set_book
-      @book = Book.accessable_or_published.find(params[:book_id])
+      @book = Book.accessable_or_published.find(slugged_param(:book_id))
     end
 
     def set_leaf
-      @leaf = @book.leaves.active.find(params[:id])
+      @leaf = @book.leaves.active.find(slugged_param(:id))
     end
 
     def set_leafable

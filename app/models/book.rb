@@ -8,7 +8,7 @@ class Book < ApplicationRecord
   scope :published, -> { where(published: true) }
 
   def to_param
-    "#{id}-#{slug}".parameterize
+    "#{slug}-#{id}".parameterize
   end
 
   def press(leafable, leaf_params)
