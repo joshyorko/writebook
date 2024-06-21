@@ -7,10 +7,6 @@ class Book < ApplicationRecord
   scope :ordered, -> { order(:title) }
   scope :published, -> { where(published: true) }
 
-  def to_param
-    "#{slug}-#{id}".parameterize
-  end
-
   def press(leafable, leaf_params)
     leaves.create! leaf_params.merge(leafable: leafable)
   end

@@ -6,7 +6,7 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "index lists the current user's books" do
-    get books_url
+    get root_url
 
     assert_response :success
     assert_select "h2", text: "Handbook"
@@ -16,7 +16,7 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
   test "index includes published books, even when the user does not have access" do
     books(:manual).update!(published: true)
 
-    get books_url
+    get root_url
 
     assert_response :success
     assert_select "h2", text: "Handbook"
@@ -27,7 +27,7 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     books(:manual).update!(published: true)
 
     sign_out
-    get books_url
+    get root_url
 
     assert_response :success
     assert_select "h2", text: "Handbook", count: 0
@@ -36,7 +36,7 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
 
   test "index redirects to login if not signed in and no published books exist" do
     sign_out
-    get books_url
+    get root_url
 
     assert_redirected_to new_session_url
   end
@@ -46,7 +46,7 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
       post books_url, params: { book: { title: "New Book", everyone_access: false } }
     end
 
-    assert_redirected_to book_url(Book.last)
+    assert_redirected_to book_slug_url(Book.last)
 
     book = Book.last
     assert_equal "New Book", book.title
@@ -71,10 +71,10 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show only shows books the current user can access" do
-    get book_url(books(:manual))
+    get book_slug_url(books(:manual))
     assert_response :not_found
 
-    get book_url(books(:handbook))
+    get book_slug_url(books(:handbook))
     assert_response :success
   end
 end

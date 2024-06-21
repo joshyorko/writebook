@@ -11,7 +11,7 @@
             <strong>Edit publication link</strong>
           </div>
           <span class="input input--actor flex align-center fill-white">
-            <%= request.host %>/
+            <%= "#{request.host}/#{@book.id}/" %>
             <%= form.text_field :slug,
                   autofocus: true,
                   class: class_names("input"),
@@ -27,7 +27,7 @@
             <span class="for-screen-reader">Save</span>
           </button>
 
-          <%= link_to book_path(@book), class: "btn flex-item-justify-start" do %>
+          <%= link_to book_slug_path(@book), class: "btn flex-item-justify-start" do %>
             <%= image_tag "remove.svg", aria: { hidden: true }, size: 24 %>
             <span class="for-screen-reader">Cancel</span>
           <% end %>

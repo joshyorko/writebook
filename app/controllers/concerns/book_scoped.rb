@@ -5,7 +5,7 @@ module BookScoped extend ActiveSupport::Concern
 
   private
     def set_book
-      @book = Book.accessable_or_published.find(slugged_param(:book_id))
+      @book = Book.accessable_or_published.find(params[:book_id])
     end
 
     def ensure_editable

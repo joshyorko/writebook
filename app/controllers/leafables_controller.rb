@@ -35,7 +35,7 @@ class LeafablesController < ApplicationController
 
     respond_to do |format|
       format.turbo_stream { render }
-      format.html { redirect_to @book }
+      format.html { redirect_to book_slug_url(@book) }
     end
   end
 

@@ -6,7 +6,7 @@ class LeafablesControllerTest < ActionDispatch::IntegrationTest
   end
 
   test "show" do
-    get book_leafable_path(books(:handbook), leaves(:welcome_page))
+    get leafable_slug_path(leaves(:welcome_page))
 
     assert_response :success
     assert_select "p", "This is such a great handbook."
@@ -16,7 +16,7 @@ class LeafablesControllerTest < ActionDispatch::IntegrationTest
     sign_out
     books(:handbook).update!(published: true)
 
-    get book_leafable_path(books(:handbook), leaves(:welcome_page))
+    get leafable_slug_path(leaves(:welcome_page))
 
     assert_response :success
     assert_select "p", "This is such a great handbook."
@@ -25,7 +25,7 @@ class LeafablesControllerTest < ActionDispatch::IntegrationTest
   test "show does not allow public access to an unpublished book" do
     sign_out
 
-    get book_leafable_path(books(:handbook), leaves(:welcome_page))
+    get leafable_slug_path(leaves(:welcome_page))
 
     assert_response :not_found
   end

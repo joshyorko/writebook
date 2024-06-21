@@ -7,7 +7,7 @@
     <div class="breadcrumbs">
       <%= render "books/index_link" %>
       <span>▸</span>
-      <%= link_to @book.title, @book %>
+      <%= link_to @book.title, book_slug_path(@book) %>
       <span>▸</span>
       <strong><%= @section.title %></strong>
     </div>

@@ -4,6 +4,6 @@ module PageLeafScoped extend ActiveSupport::Concern
 
   private
     def set_leaf
-      @leaf = Current.user.leaves.find(slugged_param(:page_id))
+      @leaf = Current.user.leaves.find(params[:page_id])
     end
 end

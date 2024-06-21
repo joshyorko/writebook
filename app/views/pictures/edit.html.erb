@@ -7,7 +7,7 @@
     <div class="breadcrumbs">
       <%= render "books/index_link" %>
       <span>▸</span>
-      <%= link_to @book.title, @book %>
+      <%= link_to @book.title, book_slug_path(@book) %>
       <span>▸</span>
       <%= form_with model: [ @book, @leaf ], url: leafable_path(@leaf), class: "flex align-center gap-half flex-item-no-shrink", format: :html do |form| %>
         <strong class="min-width"><%= form.text_field :title, form: "picture-editor", class: "input full-width", autocomplete: "off" %></strong>

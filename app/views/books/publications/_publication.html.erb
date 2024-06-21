@@ -15,7 +15,7 @@
 
   <% if book.published? %>
     <div class="flex flex-column align-center gap txt-medium">
-      <% public_url = book_url(book) %>
+      <% public_url = book_slug_url(book) %>
 
       <label class="flex flex-column gap full-width txt-align-center">
         <strong id="invite_label" class="invite-label for-screen-reader">Public link to this book</strong>

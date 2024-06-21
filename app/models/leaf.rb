@@ -9,7 +9,7 @@ class Leaf < ApplicationRecord
 
   scope :with_leafables, -> { includes(:leafable) }
 
-  def to_param
-    "#{title}-#{id}".parameterize
+  def slug
+    title.parameterize
   end
 end
