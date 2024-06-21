@@ -9,6 +9,6 @@ module PagesHelper
   end
 
   def sanitize_content(content)
-    sanitize content, scrubber: Rails::HTML::PermitScrubber.new
+    sanitize content, scrubber: HtmlScrubber.new
   end
 end
