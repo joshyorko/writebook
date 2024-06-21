@@ -18,7 +18,7 @@ class BooksController < ApplicationController
     book = Book.create! book_params
     update_accesses(book)
 
-    redirect_to book
+    redirect_to book_slug_url(book)
   end
 
   def show
@@ -33,7 +33,7 @@ class BooksController < ApplicationController
     update_accesses(@book)
     remove_cover if params[:remove_cover] == "true"
 
-    redirect_to @book
+    redirect_to book_slug_url(@book)
   end
 
   def destroy

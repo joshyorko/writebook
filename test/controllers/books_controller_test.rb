@@ -46,7 +46,7 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
       post books_url, params: { book: { title: "New Book", everyone_access: false } }
     end
 
-    assert_redirected_to book_url(Book.last)
+    assert_redirected_to book_slug_url(Book.last)
 
     book = Book.last
     assert_equal "New Book", book.title
