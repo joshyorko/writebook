@@ -94,6 +94,15 @@
   }
 }
 
+.overflow-line-clamp {
+  -webkit-line-clamp: var(--lines, 2);
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  overflow: hidden;
+  text-overflow: clip;
+  white-space: normal;
+}
+
 /* Padding */
 .pad { padding: var(--block-space) var(--inline-space); }
 .pad-double { padding: var(--block-space-double) var(--inline-space-double); }
