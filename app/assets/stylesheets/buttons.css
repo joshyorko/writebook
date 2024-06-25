@@ -131,13 +131,9 @@
 .btn--plain {
   --btn-border-radius: 0.5em;
   --btn-border-size: 0;
+  --btn-icon-size: 100%;
   --btn-padding: 0;
   --hover-size: 0;
-
-  &:not(:has(.for-screen-reader)):is(img, svg) {
-    block-size: 100%;
-    inline-size: 100%;
-  }
 }
 
 .btn--positive {
