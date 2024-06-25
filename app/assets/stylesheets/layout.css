@@ -37,6 +37,7 @@ body {
 
   &:has(.new-book-btn) {
     inset-block-end: 0;
+    pointer-events: none;
     position: sticky;
   }
 }
