@@ -1,7 +1,7 @@
 <div class="flex align-center gap txt-medium--responsive" data-controller="dependent-checkbox">
   <span class="flex align-center gap-half">
     <% if user.can_administer? %>
-      <%= image_tag "crown.svg", size: 18, aria: { hidden: "true" } %>
+      <%= image_tag "crown.svg", size: 18, aria: { hidden: "true" }, class: "colorize--black" %>
     <% end %>
     <span class="overflow-ellipsis txt-medium--responsive"><%= user.name %></span>
   </span>
