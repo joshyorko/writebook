@@ -17,7 +17,7 @@ class SectionsControllerTest < ActionDispatch::IntegrationTest
   test "update" do
     put leafable_path(leaves(:welcome_section)), params: {
       leaf: { title: "Title" },
-      section: { body: "Section body" },
+      section: { body: "Section body" }
     }
     assert_response :success
 
