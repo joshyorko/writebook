@@ -13,4 +13,16 @@ class SectionsControllerTest < ActionDispatch::IntegrationTest
     assert_equal "Section", new_section.title
     assert_equal books(:handbook), new_section.leaf.book
   end
+
+  test "update" do
+    put leafable_path(leaves(:welcome_section)), params: {
+      leaf: { title: "Title" },
+      section: { body: "Section body" },
+    }
+    assert_response :success
+
+    section = leaves(:welcome_section).reload.leafable
+    assert_equal "Title", section.title
+    assert_equal "Section body", section.body
+  end
 end

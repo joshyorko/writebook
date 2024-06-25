@@ -1,4 +1,4 @@
 <%= leafable_edit_form(section, id: "section-editor") do |form| %>
-  <h1><%= text_area_tag "leaf[title]", section.title, required: true, autofocus: true, class: "input input--textara full-width txt-align-center", autocomplete: "off", data: { controller: "autoselect" }  %></h1>
+  <h1><%= form.text_field :body, class: "input input--textara full-width txt-align-center", autocomplete: "off", autofocus: true %></h1>
   <%= form.submit "Save", hidden: true %>
 <% end %>

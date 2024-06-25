@@ -9,7 +9,9 @@
       <span>▸</span>
       <%= link_to @book.title, book_slug_path(@book) %>
       <span>▸</span>
-      <strong><%= @section.title %></strong>
+      <%= form_with model: [ @book, @leaf ], url: leafable_path(@leaf), class: "flex align-center gap-half flex-item-no-shrink", format: :html do |form| %>
+        <strong class="min-width"><%= form.text_field :title, form: "section-editor", class: "input full-width", autocomplete: "off" %></strong>
+      <% end %>
     </div>
 
     <button class="btn" data-action="fullscreen#toggle" data-fullscreen-target="button">

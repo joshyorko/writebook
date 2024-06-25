@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_06_17_075643) do
+ActiveRecord::Schema[8.0].define(version: 2024_06_25_084002) do
   create_table "accesses", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "book_id", null: false
@@ -120,6 +120,7 @@ ActiveRecord::Schema[8.0].define(version: 2024_06_17_075643) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.string "theme"
+    t.text "body"
   end
 
   create_table "sessions", force: :cascade do |t|

@@ -6,7 +6,7 @@
 
 <% if @leaf.section? %>
   <div class="page--section <%= "theme--dark" if @leaf.leafable.theme == "dark" %>">
-    <h1><%= simple_format @leaf.title %></h1>
+    <h1><%= simple_format @leaf.section.body %></h1>
   </div>
 <% elsif @leaf.page? %>
   <div class="page--page">
