@@ -30,6 +30,7 @@ gem "image_processing", "~> 1.2"
 gem "rqrcode"
 gem "thruster"
 gem "useragent", github: "basecamp/useragent"
+gem "front_matter_parser"
 
 group :development, :test do
   gem "debug"
