@@ -53,45 +53,45 @@
   max-block-size: var(--cover-height, 75dvh);
   transition: background 300ms ease;
 
-  .theme--orange &,
-  :has(#book_theme_orange:checked) & {
-    background: url(covers/cover-9.png) no-repeat center;
-    background-size: cover;
-  }
-
-  .theme--violet & ,
-  :has(#book_theme_violet:checked) &{
-    background: url(covers/cover-10.png) no-repeat center;
+  .theme--black &,
+  :has(#book_theme_black:checked) & {
+    background: url(covers/cover-black.png) no-repeat center;
     background-size: cover;
   }
 
   .theme--blue &,
   :has(#book_theme_blue:checked) & {
-    background: url(covers/cover-11.png) no-repeat center;
+    background: url(covers/cover-blue.png) no-repeat center;
     background-size: cover;
   }
 
   .theme--green &,
   :has(#book_theme_green:checked) & {
-    background: url(covers/cover-12.png) no-repeat center;
+    background: url(covers/cover-green.png) no-repeat center;
+    background-size: cover;
+  }
+
+  .theme--orange &,
+  :has(#book_theme_orange:checked) & {
+    background: url(covers/cover-orange.png) no-repeat center;
     background-size: cover;
   }
 
   .theme--magenta &,
   :has(#book_theme_magenta:checked) & {
-    background: url(covers/cover-13.png) no-repeat center;
+    background: url(covers/cover-magenta.png) no-repeat center;
     background-size: cover;
   }
 
-  .theme--black &,
-  :has(#book_theme_black:checked) & {
-    background: url(covers/cover-14.png) no-repeat center;
+  .theme--violet &,
+  :has(#book_theme_violet:checked) &{
+    background: url(covers/cover-violet.png) no-repeat center;
     background-size: cover;
   }
 
   .theme--white,
   :has(#book_theme_white:checked) & {
-    background: url(covers/cover-15.png) no-repeat center;
+    background: url(covers/cover-white.png) no-repeat center;
     background-size: cover;
   }
 }
