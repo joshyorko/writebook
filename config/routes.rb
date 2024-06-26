@@ -15,6 +15,7 @@ Rails.application.routes.draw do
   resource :account do
     scope module: "accounts" do
       resource :join_code, only: :create
+      resource :custom_styles, only: %i[ edit update ]
     end
   end
 

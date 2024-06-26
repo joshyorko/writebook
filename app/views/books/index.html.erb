@@ -12,8 +12,8 @@
 
     <% if Current.user %>
       <%= link_to users_path, class: "btn" do %>
-        <%= image_tag "people.svg", aria: { hidden: true }, size: 24 %>
-        <span class="for-screen-reader">Manage people</span>
+        <%= image_tag "settings.svg", aria: { hidden: true }, size: 24 %>
+        <span class="for-screen-reader">Manage people and settings</span>
       <% end %>
     <% else %>
       <%= link_to new_session_path, class: "btn" do %>

@@ -10,8 +10,13 @@
     <div class="breadcrumbs">
       <%= render "books/index_link" %>
       <span>▸</span>
-      <%= image_tag "people.svg", aria: { label: "People" }, size: 19, class: "colorize--black", alt: "People" %>
+      <%= image_tag "settings.svg", aria: { label: "Settings" }, size: 19, class: "colorize--black", alt: "Settings" %>
     </div>
+
+    <%= link_to edit_account_custom_styles_url, class: "btn" do %>
+      <%= image_tag "art.svg", aria: { hidden: true }, size: 24 %>
+      <span class="for-screen-reader">Custom styles</span>
+    <% end %>
   </nav>
 <% end %>
 
