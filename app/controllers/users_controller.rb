@@ -4,7 +4,7 @@ class UsersController < ApplicationController
   before_action :verify_join_code, only: %i[ new create ]
   before_action :ensure_can_administer, only: :destroy
   before_action :set_user, only: %i[ show update edit destroy ]
-  before_action :ensure_current_user, only: %i[ edit update ]
+  before_action :ensure_current_user, only: :edit
 
 
   def index
@@ -30,7 +30,11 @@ class UsersController < ApplicationController
   end
 
   def update
-    @user.update(user_params.merge(role_params))
+    if Current.user.can_administer?
+      @user.update(user_params.merge(role_params))
+    else
+      @user.update(user_params)
+    end
     redirect_to users_url
   end
 
