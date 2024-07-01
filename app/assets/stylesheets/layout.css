@@ -8,7 +8,7 @@ body {
   font-size: var(--font-medium-responsive);
   inline-size: 67ch;
   margin-inline: auto;
-  max-inline-size: 100dvw;
+  max-inline-size: 100vw;
   padding-block-end: clamp(var(--block-space), 5%, calc(var(--block-space) * 3));
   padding-inline: clamp(var(--inline-space), 5%, calc(var(--inline-space) * 3));
   text-align: center;
@@ -31,7 +31,7 @@ body {
 }
 
 :where(#footer) {
-  max-inline-size: 100dvw;
+  max-inline-size: 100vw;
   view-transition-name: footer;
 
   > nav {
@@ -47,7 +47,7 @@ body {
 }
 
 :where(#header) {
-  max-inline-size: 100dvw;
+  max-inline-size: 100vw;
   view-transition-name: header;
 
   > nav {
