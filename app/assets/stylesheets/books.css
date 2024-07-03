@@ -137,6 +137,10 @@
       font-size: 1.5em;
     }
   }
+
+  .theme--white & .book__title {
+    color: var(--color-always-black);
+  }
 }
 
 .book__cover--remove {

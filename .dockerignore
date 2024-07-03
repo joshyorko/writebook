@@ -50,6 +50,3 @@
 
 # Don't include our README
 /README.md
-
-# Ignore some large fixtures that aren't needed in production
-/test/fixtures/files/*

@@ -16,7 +16,7 @@ class QrCodeLink
   private
     class << self
       def verifier
-        ActiveSupport::MessageVerifier.new(secret)
+        ActiveSupport::MessageVerifier.new(secret, url_safe: true)
       end
 
       def secret
