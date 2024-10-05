@@ -1,7 +1,22 @@
 require "test_helper"
 
 class Books::SearchesControllerTest < ActionDispatch::IntegrationTest
-  # test "the truth" do
-  #   assert true
-  # end
+  setup do
+    sign_in :kevin
+    Page.all.map &:touch
+  end
+
+  test "create finds matching pages" do
+    post book_search_url(books(:handbook)), params: { search: "Thanks" }
+
+    assert_response :success
+    assert_select "a", text: /Thanks for reading/i
+  end
+
+  test "create shows when there are no matches" do
+    post book_search_url(books(:handbook)), params: { search: "the invisible man" }
+
+    assert_response :success
+    assert_select "p", text: /no matches/i
+  end
 end
