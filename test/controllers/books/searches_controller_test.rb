@@ -19,4 +19,11 @@ class Books::SearchesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "p", text: /no matches/i
   end
+
+  test "create shows no matches when the search has only ignored characters" do
+    post book_search_url(books(:handbook)), params: { search: "^$" }
+
+    assert_response :success
+    assert_select "p", text: /no matches/i
+  end
 end
