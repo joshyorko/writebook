@@ -12,6 +12,11 @@
       </button>
     </form>
 
+    <label class="flex align-center gap input input--actor txt-medium">
+      <%= image_tag "search.svg", aria: { hidden: "true" }, size: 30, class: "colorize--black" %>
+      <%= search_field_tag :search, "", form: "search_form", class: "search__input input full-width", autofocus: true, placeholder: "Type to find something in this book…" %>
+    </label>
+
     <%= turbo_frame_tag :search do %>
       <%= render "books/searches/form", book: book %>
     <% end %>
