@@ -37,7 +37,7 @@
       <span class="for-screen-reader">Enter fullscreen</span>
     </button>
 
-    <%= search_button(@book) %>
+    <%= render "books/searches/search", book: @book %>
 
     <% if @book.editable? %>
       <%= link_to edit_book_path(@book), class: "btn settings" do %>
