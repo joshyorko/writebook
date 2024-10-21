@@ -8,7 +8,7 @@ body {
     "main"
     "footer";
 
-  @media (min-width: 70ch) {
+  @media only screen and (min-width: 70ch) {
     grid-template-columns: auto 1fr;
     grid-template-areas:
       "sidebar header"
@@ -128,7 +128,7 @@ body {
   z-index: 1;
 }
 
-:is(#header, #footer, #toolbar) {
+:is(#header, #footer, #sidebar, #toolbar) {
   @media print {
     display: none;
   }
