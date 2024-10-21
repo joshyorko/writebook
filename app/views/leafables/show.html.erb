@@ -4,14 +4,16 @@
   <%= render "leaves/header", book: @book, leaf: @leaf %>
 <% end %>
 
-<%= render "leaves/sidebar", book: @book %>
+<% content_for :sidebar do %>
+  <%= render "leaves/sidebar", book: @book %>
+<% end %>
 
 <% if @leaf.section? %>
   <div class="page--section <%= "theme--dark" if @leaf.leafable.theme == "dark" %>">
     <h1><%= simple_format @leaf.section.body %></h1>
   </div>
 <% elsif @leaf.page? %>
-  <div class="page--page min-width">
+  <div class="page--page">
     <%= sanitize_content @leaf.page.body.to_html %>
   </div>
 <% elsif @leaf.picture? %>

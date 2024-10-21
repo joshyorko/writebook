@@ -17,7 +17,9 @@
   </div>
 <% end %>
 
-<%= render "leaves/sidebar", book: @book %>
+<% content_for :sidebar do %>
+  <%= render "leaves/sidebar", book: @book %>
+<% end %>
 
 <div class="page--picture picture-form margin-none">
   <%= render "pictures/form", book: @book, picture: @picture %>

@@ -26,7 +26,7 @@
     row-gap: calc(var(--block-space) * 0.3);
   }
 
-  .sidebar & {
+  #sidebar & {
     margin-block: clamp(var(--block-space), 5%, calc(var(--block-space) * 3));
     margin-inline: clamp(var(--inline-space), 5%, calc(var(--inline-space) * 3)) var(--inline-space);
   }
@@ -116,7 +116,7 @@
     font-weight: 700;
   }
 
-  .sidebar &,
+  #sidebar &,
   .toc__container:where(:has(#toc-list:checked)) & {
     flex-direction: row;
     flex-grow: 1;
