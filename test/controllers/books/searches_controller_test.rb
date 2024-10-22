@@ -27,4 +27,13 @@ class Books::SearchesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
     assert_select "p", text: /no matches/i
   end
+
+  test "create does not find trashed pages" do
+    leaves(:summary_page).trashed!
+
+    post book_search_url(books(:handbook)), params: { search: "Thanks" }
+
+    assert_response :success
+    assert_select "p", text: /no matches/i
+  end
 end
