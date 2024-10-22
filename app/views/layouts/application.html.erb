@@ -44,6 +44,10 @@
       <%= yield %>
     </main>
 
+    <aside id="sidebar" aria-label="Table of Contents">
+      <%= yield :sidebar %>
+    </aside>
+
     <footer id="footer">
       <%= yield :footer %>
     </footer>

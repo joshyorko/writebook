@@ -4,6 +4,10 @@
   <%= render "leaves/header", book: @book, leaf: @leaf %>
 <% end %>
 
+<% content_for :sidebar do %>
+  <%= render "leaves/sidebar", book: @book %>
+<% end %>
+
 <% if @leaf.section? %>
   <div class="page--section <%= "theme--dark" if @leaf.leafable.theme == "dark" %>">
     <h1><%= simple_format @leaf.section.body %></h1>

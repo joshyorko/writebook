@@ -106,10 +106,12 @@
   line-height: 1.2;
   text-decoration: none;
 
+  .leaf--section &,
   .toc__container:where(:has(#toc-grid:checked)) & {
     font-weight: 700;
   }
 
+  #sidebar &,
   .toc__container:where(:has(#toc-list:checked)) & {
     flex-direction: row;
     flex-grow: 1;
