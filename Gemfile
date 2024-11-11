@@ -24,7 +24,7 @@ gem "stimulus-rails"
 # Other
 gem "jbuilder"
 gem "redcarpet", "~> 3.6"
-gem "rouge", "~> 4.4"
+gem "rouge", "~> 4.5"
 gem "bcrypt", "~> 3.1.7"
 gem "image_processing", "~> 1.13"
 gem "rqrcode"
