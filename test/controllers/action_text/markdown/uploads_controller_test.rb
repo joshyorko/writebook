@@ -15,6 +15,9 @@ class ActionText::Markdown::UploadsControllerTest < ActionDispatch::IntegrationT
     end
 
     assert_response :success
+
+    # Uploads should use relative URLs, to allow for future hostname changes
+    assert JSON.parse(response.body)["fileUrl"].start_with?("/")
   end
 
   test "view attached file" do

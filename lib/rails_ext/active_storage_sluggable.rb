@@ -5,8 +5,8 @@ module ActiveStorage::Sluggable
     before_create :set_slug
   end
 
-  def slug_url(host: ActiveStorage::Current.host)
-    Rails.application.routes.url_helpers.action_text_markdown_upload_url(slug, host: host)
+  def slug_path
+    Rails.application.routes.url_helpers.action_text_markdown_upload_path(slug)
   end
 
   private
