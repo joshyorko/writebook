@@ -12,4 +12,8 @@ class Book < ApplicationRecord
   def press(leafable, leaf_params)
     leaves.create! leaf_params.merge(leafable: leafable)
   end
+
+  def markable
+    leaves.active.positioned.map { it.leafable.markable }.join("\n\n")
+  end
 end

@@ -86,4 +86,32 @@ class BooksControllerTest < ActionDispatch::IntegrationTest
     assert_select "meta[property='og:title'][content='Handbook']"
     assert_select "meta[property='og:url'][content='#{book_slug_url(books(:handbook))}']"
   end
+
+  test "show with markdown format returns combined markables" do
+    leaves(:welcome_page).leafable.update!(body: "# Welcome Content")
+    leaves(:summary_page).leafable.update!(body: "# Summary Content")
+
+    get book_slug_path(books(:handbook), format: :md)
+
+    assert_response :success
+    assert_in_body "# Welcome Content"
+    assert_in_body "# Summary Content"
+  end
+
+  test "show with markdown format does not escape HTML" do
+    leaves(:welcome_page).leafable.update!(body: "<div class='test'>HTML content</div>")
+
+    get book_slug_path(books(:handbook), format: :md)
+
+    assert_response :success
+    assert_in_body "<div class='test'>"
+    assert_not_in_body "&lt;"
+  end
+
+  test "show includes link to markdown format" do
+    get book_slug_path(books(:handbook))
+
+    assert_response :success
+    assert_select "link[rel=\"alternate\"][type=\"text/markdown\"][href=\"#{book_slug_path(books(:handbook), format: :md)}\"]"
+  end
 end

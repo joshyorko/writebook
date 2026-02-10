@@ -38,6 +38,54 @@ class LeafablesControllerTest < ActionDispatch::IntegrationTest
     assert_response :not_found
   end
 
+  test "show includes link to markdown format" do
+    get leafable_slug_path(leaves(:welcome_page))
+
+    assert_response :success
+    assert_select "link[rel=\"alternate\"][type=\"text/markdown\"][href=\"#{leafable_slug_path(leaves(:welcome_page), format: :md)}\"]"
+  end
+
+  test "show with markdown format returns raw markdown content" do
+    leaves(:welcome_page).leafable.update!(body: "## Hello\n\nThis is **bold** text.")
+
+    get leafable_slug_path(leaves(:welcome_page), format: :md)
+
+    assert_response :success
+    assert_in_body "## Hello"
+    assert_in_body "This is **bold** text."
+    assert_in_body "title: \"Welcome to The Handbook!\""
+  end
+
+  test "show with markdown format for section returns body" do
+    leaves(:welcome_section).leafable.update!(body: "Section Body Content")
+
+    get leafable_slug_path(leaves(:welcome_section), format: :md)
+
+    assert_response :success
+    assert_in_body "Section Body Content"
+    assert_in_body "title: \"The Welcome Section\""
+  end
+
+  test "show with markdown format for picture returns caption" do
+    leaves(:reading_picture).leafable.update!(caption: "A beautiful picture")
+
+    get leafable_slug_path(leaves(:reading_picture), format: :md)
+
+    assert_response :success
+    assert_in_body "A beautiful picture"
+    assert_in_body "title: \"Reading\""
+  end
+
+  test "show with markdown format does not escape HTML entities" do
+    leaves(:welcome_page).leafable.update!(body: "This has <a href='http://example.com'>a link</a>")
+
+    get leafable_slug_path(leaves(:welcome_page), format: :md)
+
+    assert_response :success
+    assert_in_body "<a href='http://example.com'>"
+    assert_not_in_body "&lt;"
+  end
+
   test "create" do
     assert_changes -> { books(:handbook).leaves.count }, +1 do
       post book_pages_path(books(:handbook), format: :turbo_stream), params: {

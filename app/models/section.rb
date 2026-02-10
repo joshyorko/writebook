@@ -4,4 +4,8 @@ class Section < ApplicationRecord
   def searchable_content
     body
   end
+
+  def markable
+    body
+  end
 end

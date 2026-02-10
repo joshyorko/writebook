@@ -16,6 +16,10 @@ class Page < ApplicationRecord
     rendered_html(markdown_source.first(1024))
   end
 
+  def markable
+    body.content.to_s
+  end
+
   private
     def plain_text
       html_body = rendered_html(markdown_source)
