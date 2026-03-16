@@ -34,7 +34,6 @@
 /config/deploy*.yml
 /bin/deploy
 /bin/deploy-*
-/bin/release
 
 # Ignore master.key (should be set in environment)
 /config/master.key
